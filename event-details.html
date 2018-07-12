@@ -1,0 +1,235 @@
+<html>
+<head>
+	<title>Event Details| webMOBI</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Gothic+A1|Open+Sans" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="Assets/css/style_trade.css">
+	<script type="text/javascript" src="assets/js/main.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDAt_IsMIpwDe9wMQJ7aEpMtCg2HfYlMs&libraries=places&callback=initMap" async defer></script>
+</head>
+<style type="text/css">
+	.modal-header{
+		display: initial;
+	}
+	.modal-header .close{
+		margin-top: -10%;
+	}
+</style>
+<body>
+	<nav id="Navigation" class="navbar fixed-top">
+		<div class="container-fluid main-navigation">
+			<div class="row">
+				<div class="col-sm-2">
+					<a href="index.html"><img src="Assets/img/trade/webmobi.png"></a>
+				</div>
+			<!-- <ul type="none">
+				<li id="login"><a href="#">LOGIN</a></li>
+			</ul>
+			<button id="create_event" style=" display: none;" class="btn create-event-nav" onclick="window.location.href='https://webmobi.com/user/login';">CREATE EVENT</button> -->
+				<div class="col-sm-7" style="padding-top: 5px;">
+					<div class="row discover-events-cont">
+						<!-- <div class="col-sm-4">
+							<select class="form-control location">
+								<option>Location</option>
+								<option>Test2</option>
+								<option>Test3</option>
+							</select>
+						</div> -->
+					<!-- 	<div class="col-sm-8">
+							<div class="input-group input-search">
+			        			<div class="input-group-prepend">
+			         				 <div class="input-group-text search-image"><img src="Assets/img/trade/search-1.png"></div>
+			        			</div>
+			        			<input type="text" class="form-control search-events" placeholder="Search events with name">
+			      			</div>
+						</div> -->
+					</div>
+				</div>
+				<div class="col-sm-1">
+					<div class="profile-det">
+					</div>
+				</div>
+				<div class="col-sm-2 event-create">
+					CREATE EVENT
+				</div>
+			</div>
+		</div>
+	</nav>
+	<div class="header-wrapper-event-det">
+		<div class="container-fluid header-wrapper-event-det-inner"  >
+		</div>
+	</div>
+	<div class="event-det-cont">
+	<!-- 	<div class="row event-det">
+			<div class="col-sm-4 event-det-sec1">
+			<div class="event-det-sec1-1">
+				<h3>Summer Camp for kids 2018</h3>
+				<h5>#tags #tags #tags</h5>
+				 <h6><i class="fas fa-map-marker-alt"></i> location</h6>
+				<h6>22/08/2018 7:00 AM - 23/08/2018 7:00 PM</h6>
+				<button class="btn interestedbtn" data-toggle="modal" data-target="#intrst">INTERESTED</button>
+				<div class="event-det-share-sec1">
+					<div class="row">
+						<div class="col-sm-2 offset-sm-3 event-det-social">
+							<h5>Share:</h5>
+						</div>
+						<div class="col-sm-1 event-det-social">
+							<a href=""><i class="fab fa-facebook-f"></i></a>
+						</div>
+						<div class="col-sm-1 event-det-social">
+							<a href=""><i class="fab fa-twitter"></i></a>
+						</div>
+						<div class="col-sm-1 event-det-social">
+							<a href=""><i class="fab fa-linkedin-in"></i></i></a>
+						</div>
+						<div class="col-sm-1 event-det-social">
+							<a href=""><i class="fab fa-google-plus-g"></i></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="event-det-sec1-2">
+				<h4>Organiser Details</h4>
+				<img class="event-det-org-pic">
+				<h5>Organiser Name</h5>
+				<button type="button" class="btn sendmessage">SEND MESSAGE</button>
+			</div>
+			</div>
+			<div class="col-sm-8 event-det-sec2">
+				<div class="event-det-heading">
+					<ul class="nav">
+						<li class="nav-item"><a href="#overview" class="nav-link">OVERVIEW</a></li>
+						<li class="nav-item"><a href="#tickets" class="nav-link">TICKETS</a></li>
+						<li class="nav-item"><a href="#venue" class="nav-link">VENUE</a></li>
+					</ul>
+				</div>
+				<div class="event-det-overview" id="overview">
+					<h2>OVERVIEW</h2>
+					<h4>
+						A unique fun & interactive summer camp on robotics. Participants in this course will 
+						experience and learn applied sciences in a new exciting way of Electronics and Robotics. 
+						Our course is designed in a way to utilize the S.T.E.M learning to the fullest, stimulating 
+						the young minds to develop cognitive and creative thinking ability. We focus on the 
+						application of the technology used as well as the science that goes behind it. This along 
+						with our hands-on experiment approach makes it easy for the kids to grasp the concept 
+						and be able to relate better when coming across it in school curriculum.
+					</h4>
+				</div>
+				<div class="event-det-tickets" id="tickets">
+					<h2>TICKETS</h2>
+					<h4>Tickets for "Summer camp for kids 2018" can be purchased here.</h4>
+					<button type="button" class="btn booknow">BOOK NOW</button>
+				</div>
+				<div class="event-det-venue" id="venue">
+					<h2>VENUE</h2>
+					<h4>KAIROS, 14TH MAIN, 12TH CROSS, SECTOR-4, HSR LAYOUT, BENGALURU, INDIA</h4>
+					<img src="Assets/img/trade/venue.png" class="img-responsive">
+				</div>
+			</div>
+		</div>
+ -->	</div>
+	<div class="footer">
+		<div class="container-fluid footer-sec1">
+			<div class="row">
+				<div class="col-sm-2 stay-connected">
+					<h5>Stay Connected</h5>
+					<h6>Connect with Us</h6>
+					<div class="row social">
+						<div  class="col-sm-2 fb"><a href="https://www.facebook.com/WebMobi/" target="_blank"><i class="fab fa-facebook-f"></i></a></div>
+	                    <div  class="col-sm-2 lin"><a href="https://www.linkedin.com/company/webmobi" target="_blank"><i class="fab fa-linkedin-in"></i></a></div>
+	                    <div  class="col-sm-2 tw"><a href="https://twitter.com/web_mobi" target="_blank"><i class="fab fa-twitter"></i></a></div>
+	                    <div  class="col-sm-2 gp"><a href="https://plus.google.com/u/0/111661823833667417654" target="_blank"><i class="fab fa-google-plus-g"></i></a></div>
+	                </div>
+				</div>
+				<div class="col-sm-4 email-updates">
+					<h5>Email Updates</h5>
+					<h6>Subscribe to our news letter</h6>
+					<div class="input-group">
+                        <input type="text" class="form-control mailsub" placeholder="you@example.com">
+                        <span class="input-group-btn ">
+                        	<button class="btn subsbtn" type="button">Subscribe</button>
+                        </span>
+                    </div>
+				</div>
+				<div class="col-sm-3 contact">
+					<h5>Contact us</h5>
+					<h6>Have any questions feel free to contact us at:</h6>
+					<h6 style="color: #FC4C72; font-family:'corbelb'">support@webmobi.com</h6>
+					<h6 >+1-888-55-WEBMOBI</h6>
+				</div>
+				<div class="col-sm-3 address">
+					<h5>Address</h5>
+					<div class="row">
+						<div class="col-sm-6">
+							<h6>1250, Oakmead Parkway<br>
+								Suit-210<br>
+								Sunnyvale,<br>
+								CA-94085(USA)
+							</h6>
+						</div>
+						<div class="col-sm-6">
+							<h6>401,Regency Enclave<br>
+								Magrath Rd<br>
+								Ashoknagar<br>
+								Bengaluru-560025
+							</h6>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="copyright">
+			Copyright © webMOBI 2017. All Rights Reserved
+		</div>
+	</div>
+	<div class="modal" id="intrst">
+	    <div class="modal-dialog">
+	        <!-- <div class="modal-content">
+	      
+	        	<!-- Modal Header 
+		        <div class="modal-header text-center">
+		          <h4 class="modal-title">Summer Camp for kids 2018</h4>
+		          <button type="button" class="close" data-dismiss="modal">&times;</button>
+		        </div>
+		        
+		         Modal body 
+		        <div class="modal-body">
+		  			<div class="form-group event-det-modal">
+		  				<i class="fas fa-user"></i>
+		  				<input type="text" class="form-control event-det-username" id="usrname" placeholder="Full Name">
+		  			</div>   
+		  			<div class="form-group event-det-modal">
+		  				<i class="fas fa-map-marker-alt"></i>
+		  				<input type="text" class="form-control event-det-username" id="loc" placeholder="Your City ( Start typing to see option )">
+		  			</div>
+		  			<div class="form-group event-det-modal">
+		  				<i class="fas fa-building"></i>
+		  				<input type="text" class="form-control event-det-username" id="company" placeholder="Company">
+		  			</div>
+		  			<span class="individual">
+		  				<label class="form-check-label" style="margin-top: -10%;">
+		    				<input type="checkbox" class="form-check-input" value=""> Individual
+						</label>
+		  			</span>
+		  			<div class="form-group event-det-modal">
+		  				<i class="fas fa-briefcase"></i>
+		  				<input type="text" class="form-control event-det-username" id="designation" placeholder="Designation">
+		  			</div> 
+		  			<div class="form-group event-det-modal">
+		  				<i class="fas fa-mobile-alt"></i>
+		  				<input type="text" class="form-control event-det-username" id="mobno" placeholder="Mobile number">
+		  			</div> 
+		  			<div class="submit-btn">
+		  				<button type="submit" class="btn submit1" data-dismiss="modal">SUBMIT</button>
+		  			</div>         	
+		        </div>
+		    </div> --> 
+		</div>
+	</div>
+	</body>
+</html>
