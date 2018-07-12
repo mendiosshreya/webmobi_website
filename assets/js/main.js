@@ -70,12 +70,17 @@ $(document).ready(function(){
             data:{"userid":"32dfa84844d9de66e4c77fc71cbdb5bd","appid":event_appid},
             url: ' http://104.131.76.15:3000/api/event/getEvent',
                         success: function(event_details) {
+
+                         var start_date = Date.parse(event_details.events[0].start_date);
+                         var date_inmilliseconds_sd = start_date *1;
+                         var end_date = Date.parse(event_details.events[0].end_date);
+                         var date_inmilliseconds_ed = end_date *1;
                          
                           console.log(event_details);
-                          var sd=new Date(event_details.events[0].start_date);
-                          var ed=new Date(event_details.events[0].end_date);
+                          // var sd=new Date(event_details.events[0].start_date);
+                          // var ed=new Date(event_details.events[0].end_date);
                           $(".header-wrapper-event-det").css("background-image", "url('"+event_details.events[0].app_image+"')");
-                          $('.event-det-cont').append('<div class="row event-det"><div class="col-sm-4 event-det-sec1"><div class="event-det-sec1-1"><h3>'+event_details.events[0].app_name+'</h3><h5>#'+event_details.events[0].app_category+' #tags #tags</h5><h6><i class="fas fa-map-marker-alt"></i>'+event_details.events[0].location+'</h6><h6>'+sd+'- '+ed+'</h6> <button class="btn interestedbtn" data-toggle="modal" data-target="#intrst">INTERESTED</button><div class="event-det-share-sec1"><div class="row"><div class="col-sm-2 offset-sm-3 event-det-social"><h5>Share:</h5></div><div class="col-sm-1 event-det-social"> <a href=""><i class="fab fa-facebook-f"></i></a></div><div class="col-sm-1 event-det-social"> <a href=""><i class="fab fa-twitter"></i></a></div><div class="col-sm-1 event-det-social"> <a href=""><i class="fab fa-linkedin-in"></i></i></a></div><div class="col-sm-1 event-det-social"> <a href=""><i class="fab fa-google-plus-g"></i></i></a></div></div></div></div><div class="event-det-sec1-2"><h4>Organiser Details</h4> <img class="event-det-org-pic"><h5>Organiser Name</h5> <button type="button" class="btn sendmessage">SEND MESSAGE</button></div></div><div class="col-sm-8 event-det-sec2"><div class="event-det-heading"><ul class="nav"><li class="nav-item"><a href="#overview" class="nav-link">OVERVIEW</a></li><li class="nav-item"><a href="#tickets" class="nav-link">TICKETS</a></li><li class="nav-item"><a href="#venue" class="nav-link">VENUE</a></li></ul></div><div class="event-det-overview" id="overview"><h2>OVERVIEW</h2><h4>'+event_details.events[0].app_description+'</h4></div><div class="event-det-tickets" id="tickets"><h2>TICKETS</h2><h4>Tickets for "'+event_details.events[0].app_name+'" can be purchased here.</h4> <button type="button" class="btn booknow">BOOK NOW</button></div><div class="event-det-venue" id="venue"><h2>VENUE</h2><h4>'+event_details.events[0].location+'</h4><div id="map"> <img  class="img-responsive"></div></div></div></div>');
+                          $('.event-det-cont').append('<div class="row event-det"><div class="col-sm-4 event-det-sec1"><div class="event-det-sec1-1"><h3>'+event_details.events[0].app_name+'</h3><h5>#'+event_details.events[0].app_category+' #tags #tags</h5><h6><i class="fas fa-map-marker-alt"></i>'+event_details.events[0].location+'</h6><h6>'+date_day(date_inmilliseconds_sd)+" "+milli_hour(date_inmilliseconds_sd)+'-'+date_day(date_inmilliseconds_ed)+" "+milli_hour(date_inmilliseconds_ed)+'</h6> <button class="btn interestedbtn" data-toggle="modal" data-target="#intrst">INTERESTED</button><div class="event-det-share-sec1"><div class="row"><div class="col-sm-2 offset-sm-3 event-det-social"><h5>Share:</h5></div><div class="col-sm-1 event-det-social"> <a href=""><i class="fab fa-facebook-f"></i></a></div><div class="col-sm-1 event-det-social"> <a href=""><i class="fab fa-twitter"></i></a></div><div class="col-sm-1 event-det-social"> <a href=""><i class="fab fa-linkedin-in"></i></i></a></div><div class="col-sm-1 event-det-social"> <a href=""><i class="fab fa-google-plus-g"></i></i></a></div></div></div></div><div class="event-det-sec1-2"><h4>Organiser Details</h4> <img class="event-det-org-pic"><h5>Organiser Name</h5> <button type="button" class="btn sendmessage">SEND MESSAGE</button></div></div><div class="col-sm-8 event-det-sec2"><div class="event-det-heading"><ul class="nav"><li class="nav-item"><a href="#overview" class="nav-link">OVERVIEW</a></li><li class="nav-item"><a href="#tickets" class="nav-link">TICKETS</a></li><li class="nav-item"><a href="#venue" class="nav-link">VENUE</a></li></ul></div><div class="event-det-overview" id="overview"><h2>OVERVIEW</h2><h4>'+event_details.events[0].app_description+'</h4></div><div class="event-det-tickets" id="tickets"><h2>TICKETS</h2><h4>Tickets for "'+event_details.events[0].app_name+'" can be purchased here.</h4> <button type="button" class="btn booknow">BOOK NOW</button></div><div class="event-det-venue" id="venue"><h2>VENUE</h2><h4>'+event_details.events[0].location+'</h4><div id="map"> <img  class="img-responsive"></div></div></div></div>');
                           $('.modal-dialog').append('<div class="modal-content"><div class="modal-header text-center"><h4 class="modal-title">'+event_details.events[0].app_name+'</h4> <button type="button" class="close" data-dismiss="modal">&times;</button></div><div class="modal-body"><div class="form-group event-det-modal"> <i class="fas fa-user"></i> <input type="text" class="form-control event-det-username" id="usrname" placeholder="Full Name"></div><div class="form-group event-det-modal"> <i class="fas fa-map-marker-alt"></i> <input type="text" class="form-control event-det-username" id="loc" placeholder="Your City ( Start typing to see option )"></div><div class="form-group event-det-modal"> <i class="fas fa-building"></i> <input type="text" class="form-control event-det-username" id="company" placeholder="Company"></div> <span class="individual"> <label class="form-check-label" style="margin-top: -10%;"> <input type="checkbox" class="form-check-input" value=""> Individual </label> </span><div class="form-group event-det-modal"> <i class="fas fa-briefcase"></i> <input type="text" class="form-control event-det-username" id="designation" placeholder="Designation"></div><div class="form-group event-det-modal"> <i class="fas fa-mobile-alt"></i> <input type="text" class="form-control event-det-username" id="mobno" placeholder="Mobile number"></div><div class="submit-btn"> <button type="submit" class="btn submit1" data-dismiss="modal">SUBMIT</button></div></div></div>');
                            
                            var line1  = event_details.events[0].location;
@@ -126,11 +131,15 @@ $(document).ready(function(){
             type: 'GET',
             url: 'http://104.131.76.15:3000/api/event/event_search?q='+search_input+'',
                         success: function(search_result) {
+                          // alert();
                           console.log(search_result);
-                          $('#all_display').empty();
+                          console.log(search_result.response);
+                           
+                          // $("#all_events_content").empty();
+                          // $('#all_display').empty();
                           // $('#trade_display').empty();
                           // $('#conf_display').empty();
-                          if(search_result.response=="true")
+                          if(search_result.response==true)
                            { 
                                 for(var i=0; i<search_result.events.length;i++)
                                 {
@@ -148,6 +157,9 @@ $(document).ready(function(){
                                     
                                 }
                             }  
+
+                            // else
+                            //   alert("No events found!");
 
                              
                           
@@ -170,41 +182,43 @@ $(document).ready(function(){
        var target= window.location.href.split('#').pop();
        if(target=="tradeshows_view")
        {
+        // alert();
+        display_tradeshows(this);
          // alert("target");
        
        // // display_tradeshows(this);
-        $.ajax({
-            type: 'GET',
-            url: 'http://104.131.76.15:3000/api/event/discovery_web_events?type=tradeshow&page_number='+pg_no_trade+'',
+        // $.ajax({
+        //     type: 'GET',
+        //     url: 'http://104.131.76.15:3000/api/event/discovery_web_events?type=tradeshow&page_number='+pg_no_trade+'',
             
-            // url: 'http://139.59.56.245:3080/tradeshows/?pretty',
-                        success: function(datago_trade) {
+        //     // url: 'http://139.59.56.245:3080/tradeshows/?pretty',
+        //                 success: function(datago_trade) {
                          
-                          console.log(datago_trade);
-                          console.log(datago_trade.events.length);
-                          $("#all_display").empty();
-                          for(var i=0; i<datago_trade.events.length;i++)
-                          {
-                                   var loc=datago_trade.events[i].location;
-                                   if (loc.length >40)
-                                   loc= loc.substring(0,40)+'...';
-                                   var entry_fee_trade=parseInt(datago_trade.events[i].entry_fee);
-                                   // console.log(entry_fee_trade);
-                                   if(entry_fee_trade==0)
-                                     var entry_fee_text_trade="Free";
-                                   else
-                                     var entry_fee_text_trade="Paid"; 
+        //                   console.log(datago_trade);
+        //                   console.log(datago_trade.events.length);
+        //                   $("#all_display").empty();
+        //                   for(var i=0; i<datago_trade.events.length;i++)
+        //                   {
+        //                            var loc=datago_trade.events[i].location;
+        //                            if (loc.length >40)
+        //                            loc= loc.substring(0,40)+'...';
+        //                            var entry_fee_trade=parseInt(datago_trade.events[i].entry_fee);
+        //                            // console.log(entry_fee_trade);
+        //                            if(entry_fee_trade==0)
+        //                              var entry_fee_text_trade="Free";
+        //                            else
+        //                              var entry_fee_text_trade="Paid"; 
 
-                                   var con_sd = new Date(datago_trade.events[i].start_date);
-                                   $("#all_display").append('<div class="col-sm-4"><div class="popular-events-cell1"> <a href="event-details.html#'+datago_trade.events[i].appid+'"><div class="pop-bg-img2"> <img src='+datago_trade.events[i].app_image+'></div><div class="pop-event-cont1"><h5>'+datago_trade.events[i].app_name+'</h5></div><div class="row pop-event-cont2"><div class="col-sm-8 pop-event-loc-time"><h6><i class="fas fa-map-marker-alt"></i>'+loc+'</h6><h6><i class="far fa-calendar-alt"></i> '+con_sd+'</h6></div><div class="col-sm-4 pop-event-price"><h5>'+entry_fee_text_trade+'</h5></div></div><div class="pop-event-cont3"><h6>#'+datago_trade.events[i].app_category+", "+'#'+datago_trade.events[i].app_sub_category+'</h6></div> </a></div></div></div>');
+        //                            var con_sd = new Date(datago_trade.events[i].start_date);
+        //                            $("#all_display").append('<div class="col-sm-4"><div class="popular-events-cell1"> <a href="event-details.html#'+datago_trade.events[i].appid+'"><div class="pop-bg-img2"> <img src='+datago_trade.events[i].app_image+'></div><div class="pop-event-cont1"><h5>'+datago_trade.events[i].app_name+'</h5></div><div class="row pop-event-cont2"><div class="col-sm-8 pop-event-loc-time"><h6><i class="fas fa-map-marker-alt"></i>'+loc+'</h6><h6><i class="far fa-calendar-alt"></i> '+con_sd+'</h6></div><div class="col-sm-4 pop-event-price"><h5>'+entry_fee_text_trade+'</h5></div></div><div class="pop-event-cont3"><h6>#'+datago_trade.events[i].app_category+", "+'#'+datago_trade.events[i].app_sub_category+'</h6></div> </a></div></div></div>');
                               
-                           }
-                          $("#all_display").append('<div class="row container-fluid prev_next "><button id="prev" type="button" class="btn btn-info" onclick="display_tradeshows(this)"><i class="fas fa-arrow-left">Previous</i></button><button id="next" type="button" class="btn btn-info" onclick="display_tradeshows(this)">Next<i class="fas fa-arrow-right"></i></button></div>'); 
-                        },error:function(errdatagc)
-                        {
-                          console.log(errdatagc);
-                        }        
-              });  
+        //                    }
+        //                   $("#all_display").append('<div class="row container-fluid prev_next "><button id="prev" type="button" class="prev_next_buttons" onclick="display_tradeshows(this)">Previous<i class="fas fa-arrow-left"></i></button><button id="next" type="button" class="prev_next_buttons" onclick="display_tradeshows(this)">Next<i class="fas fa-arrow-right"></i></button></div>'); 
+        //                 },error:function(errdatagc)
+        //                 {
+        //                   console.log(errdatagc);
+        //                 }        
+        //       });  
       }
     }
   
@@ -255,7 +269,7 @@ $(document).ready(function(){
                             
 
                            }
-                          $("#all_display").append('<div class="row container-fluid prev_next "><button id="prev_conf" type="button" class="prev_next_buttons" onclick="display_conferences(this)"><i class="fas fa-arrow-left"></i>Previous</button><button id="next_conf" type="button" class="prev_next_buttons" onclick="display_conferences(this)">Next<i class="fas fa-arrow-right"></i></button></div>'); 
+                          $("#all_display").append('<div class="row container-fluid prev_next "><button id="prev" type="button" class="prev_next_buttons" onclick="display_conferences(this)"><i class="fas fa-arrow-left"></i>Previous</button><button id="next_conf" type="button" class="prev_next_buttons" onclick="display_conferences(this)">Next<i class="fas fa-arrow-right"></i></button></div>'); 
                         },error:function(errdatagc)
                         {
                           console.log(errdatagc);
@@ -376,7 +390,8 @@ $.ajax({
                               {
                                  $('#all_country').append('<div><input type="checkbox" name="country" value="'+fcountry.data[i].Country+'">'+fcountry.data[i].Country+'</div>');
                               }
-                              $('#all_country').append('<button type="button" class="view" data-toggle="modal" data-target="#myModal">View All</button><div id="myModal" class="modal fade" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">All Countries</h4><button type="button" class="close" data-dismiss="modal">&times;</button></div><div class="modal-body"><div id="filter_all_countries" class="row count-list"></div></div><div class="modal-footer"> <button type="button" class="btn btn-default" onclick="add_to_filter()">Done</button></div></div></div></div></a>');
+
+                              $('#all_country').append('<button type="button" class="view" data-toggle="modal" data-target="#myModal" >View All</button><div id="myModal" class="modal fade" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">All Countries</h4><button type="button" class="close" data-dismiss="modal">&times;</button></div><div class="modal-body"><div id="filter_all_countries" class="row count-list"></div></div><div class="modal-footer"> <button type="button" class="btn btn-default" data-dismiss="modal" onclick="add_to_filter()">Done</button></div></div></div></div></a>');
                               },error:function(errdatagc)
             {
                 console.log(errdatagc);
@@ -592,16 +607,7 @@ function search_events()
 //    handleTopNavAnimation();
 //  });
 
-function add_to_filter()
-{
-  alert();
-  var selected_country=$("input:checkbox[name=country]:checked");
-  console.log(selected_country[0].value());
-      // if(selected_country.length>0)
-      // {
-      //   country_array.pop();
-      // }
-}
+
 function handleTopNavAnimation() 
    {
 
@@ -619,11 +625,14 @@ function handleTopNavAnimation()
 
 function display_tradeshows(e)
 {
-  // console.log(e.id);
-  var action=e.id;                   
-  if(action=="trade_main")
+  
+  var action=e.id;
+  // console.log("HI");  
+  console.log(action); 
+                
+  if((action=="trade_main") || (action==undefined))
          pg_no_trade=1;
-   else
+  else
    {      
        if(action=="next")
        
@@ -759,7 +768,7 @@ function trade_conferences(e)
            pg_no_all--;    
        }
   }
-  console.log(pg_no_all);
+  // console.log(pg_no_all);
 
      $.ajax({
             type: 'GET',
@@ -863,99 +872,6 @@ function display_all_categories()
   });
 }
 
-function filter()
-{    
-      
-
-      var selected_country=$("input:checkbox[name=country]:checked");
-      // console.log()
-      if(selected_country.length>0)
-      {
-        country_array.pop();
-      }
-
-      // console.log(country_array);
-
-      var selected_location=$("input:checkbox[name=location]:checked");
-       if(selected_location.length>0)
-      {
-        location_array.pop();
-      }
-      // var selected_category=$("input:checkbox[name=category]:checked");
-
-      var selected_startdate=$('#filter_startdate').val();
-      if(selected_startdate!='')
-      {
-         filter_startdate=selected_startdate;
-      }
-      
-      var selected_enddate=$('#filter_enddate').val();
-       if(selected_startdate!='')
-      {
-         filter_startdate=selected_enddate;
-      }
-
-
-      for(var i=0;i<selected_country.length;i++)
-       {
-        var sel_value_country=$(selected_country[i]).val();
-        country_array.push(sel_value_country);
-        // console.log(sel_value_country);
-       }  
-
-       for(var i=0;i<selected_location.length;i++)
-       {
-        var sel_value_location=$(selected_location[i]).val();
-        location_array.push(sel_value_location);
-       }  
-       // for(var i=0;i<selected_category.length;i++)
-       // {
-       //  var sel_value_category=$(selected_category[i]).val();
-       //  category_array.push(sel_value_category);
-       //  // console.log(sel_value_category);
-       // }  
-       var country = JSON.stringify(country_array);
-       var locat   = JSON.stringify(location_array);
-       // console.log(country);
-       // console.log(locat);
-
-       $.ajax({
-
-         type: 'POST',
-         url: 'http://104.131.76.15:3000/api/event/filter_event',
-         data:{"country":country,"location":locat,"date":"anydate","category":"anycategory"},
-          success: function(filter) {
-            // console.log(filter.events.length);
-            console.log(filter);
-            // if(filter.response=="true")
-            // {
-                for(var i=0;i<filter.events.length;i++)
-                {
-                  var loc=filter.events[i].location;
-                   if (loc.length >40)
-                   loc= loc.substring(0,40)+'...';
-                   var entry_fee_filter=parseInt(filter.events[i].entry_fee);
-                   // console.log(entry_fee_trade);
-                   if(entry_fee_filter==0)
-                     var entry_fee_text_filter="Free";
-                   else
-                     var entry_fee_text_filter="Paid";  
-                   var sd=new Date(filter.events[i].start_date);
-                  $("#all_display").append('<div class="col-sm-4"><div class="popular-events-cell1"> <a href="event-details.html#'+filter.events[i].appid+'"><div class="pop-bg-img2"> <img src='+filter.events[i].app_image+'></div><div class="pop-event-cont1"><h5>'+filter.events[i].app_name+'</h5></div><div class="row pop-event-cont2"><div class="col-sm-8 pop-event-loc-time"><h6><i class="fas fa-map-marker-alt"></i>'+loc+'</h6><h6><i class="far fa-calendar-alt"></i> '+sd+'</h6></div><div class="col-sm-4 pop-event-price"><h5>'+entry_fee_text_filter+'</h5></div></div><div class="pop-event-cont3"><h6>#'+filter.events[i].app_category+", "+'#'+filter.events[i].app_sub_category+'</h6></div> </a></div></div></div>');
-                              
-                }
-              // } 
-              // else
-              // {
-                // alert("No events found!!!")
-              // } 
-          },error:function(errdatagc)
-            {
-              console.log(errdatagc);
-            }      
-       });
-}
-
 function search_events_name(e)
 {
       var search_input=$("#search_events_name").val();
@@ -1004,3 +920,165 @@ function index_search()
 
      // console.log(search_input);
 }
+function add_to_filter()
+{
+  var selected_country=$("input:checkbox[name=country]:checked");
+  var selected_location=$("input:checkbox[name=location]:checked");
+
+  // for(var i=0;i<selected_country.length;i++)
+  // {
+  //   var sel_value_country=$(selected_country[i]).val();
+  //   country_array.push(sel_value_country);
+  // }
+  
+  // filter();
+  // console.log(selected_country[0].value());
+      // if(selected_country.length>0)
+      // {
+      //   country_array.pop();
+      // }
+}
+
+function filter()
+{    
+      
+    
+      var selected_country=$("input:checkbox[name=country]:checked");
+     
+
+      var selected_location=$("input:checkbox[name=location]:checked");
+      //  if(selected_location.length>0)
+      // {
+      //   location_array.pop();
+      // }
+      // var selected_category=$("input:checkbox[name=category]:checked");
+
+      var selected_startdate=$('#filter_startdate').val();
+      if(selected_startdate!='')
+      {
+         filter_startdate=selected_startdate;
+      }
+      
+      var selected_enddate=$('#filter_enddate').val();
+       if(selected_startdate!='')
+      {
+         filter_startdate=selected_enddate;
+      }
+
+
+      for(var i=0;i<selected_country.length;i++)
+       {
+        var sel_value_country=$(selected_country[i]).val();
+        country_array.push(sel_value_country);
+        // console.log(sel_value_country);
+       }  
+    
+
+
+       for(var i=0;i<selected_location.length;i++)
+       {
+        var sel_value_location=$(selected_location[i]).val();
+        location_array.push(sel_value_location);
+       }  
+       // for(var i=0;i<selected_category.length;i++)
+       // {
+       //  var sel_value_category=$(selected_category[i]).val();
+       //  category_array.push(sel_value_category);
+       //  // console.log(sel_value_category);
+       // }  
+       var country = JSON.stringify(country_array);
+       var locat   = JSON.stringify(location_array);
+       console.log(country_array);
+       console.log(location_array);
+       // console.log(country);
+       // console.log(locat);
+
+       $.ajax({
+
+         type: 'POST',
+         url: 'http://104.131.76.15:3000/api/event/filter_event',
+         data:{"country":country,"location":locat,"date":"anydate","category":"anycategory"},
+          success: function(filter) {
+            // console.log(filter.events.length);
+            console.log(filter);
+            // if(filter.response=="true")
+            // {
+                for(var i=0;i<filter.events.length;i++)
+                {
+                  var loc=filter.events[i].location;
+                   if (loc.length >40)
+                   loc= loc.substring(0,40)+'...';
+                   var entry_fee_filter=parseInt(filter.events[i].entry_fee);
+                   // console.log(entry_fee_trade);
+                   if(entry_fee_filter==0)
+                     var entry_fee_text_filter="Free";
+                   else
+                     var entry_fee_text_filter="Paid";  
+                   var sd=new Date(filter.events[i].start_date);
+                  $("#all_display").append('<div class="col-sm-4"><div class="popular-events-cell1"> <a href="event-details.html#'+filter.events[i].appid+'"><div class="pop-bg-img2"> <img src='+filter.events[i].app_image+'></div><div class="pop-event-cont1"><h5>'+filter.events[i].app_name+'</h5></div><div class="row pop-event-cont2"><div class="col-sm-8 pop-event-loc-time"><h6><i class="fas fa-map-marker-alt"></i>'+loc+'</h6><h6><i class="far fa-calendar-alt"></i> '+sd+'</h6></div><div class="col-sm-4 pop-event-price"><h5>'+entry_fee_text_filter+'</h5></div></div><div class="pop-event-cont3"><h6>#'+filter.events[i].app_category+", "+'#'+filter.events[i].app_sub_category+'</h6></div> </a></div></div></div>');
+                              
+                }
+              // } 
+              // else
+              // {
+                // alert("No events found!!!")
+              // } 
+          },error:function(errdatagc)
+            {
+              console.log(errdatagc);
+            }      
+       });
+}
+
+function milli_hour(date_inmilliseconds)
+  {
+      var a = new Date(date_inmilliseconds);
+      var c = "";
+      if(a.getHours()>12) 
+      {
+          if(a.getMinutes() == 0)
+          {
+             c = (a.getHours()-12)+":"+"00"+" pm"; 
+          }
+          else
+          {
+              c = (a.getHours()-12)+":"+a.getMinutes()+" "+" pm";
+          }
+      }
+      else if(a.getHours()==12) 
+      {
+          if(a.getMinutes() == 0)
+          {
+             c = a.getHours()+":"+"00"+" pm"; 
+          }
+          else
+          {
+              c = a.getHours()+":"+a.getMinutes()+" "+" pm";
+          }
+      }
+      else if(a.getHours()<12) 
+      {
+          if(a.getMinutes() == 0)
+          {
+             c = a.getHours()+":"+"00"+" am"; 
+          }
+          else
+          {
+              c = a.getHours()+":"+a.getMinutes()+" "+" am";
+          }
+      }
+      return c;
+  }
+
+
+function date_day(date_inmilliseconds)
+  {
+      //new Date(results.enddate + timezone + 19800000);
+      var a = new Date(date_inmilliseconds);
+      var c = "";
+      const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+      ];
+      c = a.getDate()+" "+monthNames[a.getMonth()]+" "+a.getFullYear();
+      return c;
+  }

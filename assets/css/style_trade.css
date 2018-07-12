@@ -1027,16 +1027,37 @@ textarea {text-align:center !important;margin:10px 0 0 0;resize:none !important;
   outline:none;
   margin-left: 82%;
 } 
-#next_all
+/*#next_all
 {
   margin-left: 82%;
 } 
 #next_conf
 {
   margin-left: 82%;
-} 
+} */
 #map
 {
   margin-top: 3%;
   margin-bottom: 5%;
+}
+#prev_conf
+{
+    margin-left: 2%;
+    margin-bottom: 3%;
+}
+#next_conf 
+{
+    margin-left: 78%;
+    margin-bottom: 3%;
+}
+
+#prev_all 
+{
+    margin-left: 2%;
+    margin-bottom: 3%;
+}
+#next_all 
+{
+    margin-left: 78%;
+    margin-bottom: 3%;
 }
