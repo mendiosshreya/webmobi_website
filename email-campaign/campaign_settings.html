@@ -1,0 +1,87 @@
+<html>
+<head>
+  <title>Campaign settings | webMOBI</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script type="text/javascript" src="assets/js/jquery.simplePagination.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Gothic+A1|Open+Sans" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="Assets/css/style.css">
+  <script type="text/javascript" src="assets/js/main.js"></script>
+</head>
+
+<body>
+
+          <div class="tab">
+                    <div class="logo_div">
+                      <a href="#"><img src="assets/images/WebMobi.png"></a>
+                    </div>
+                    <button class="tablinks active" onclick="opentab(event, 'campaigns')" id="defaultOpen"><img src="assets/images/campaigns.png"></button>
+                    <button class="tablinks" onclick="opentab(event, 'audience')"><img src ="assets/images/audience.png"></button>
+          </div>
+
+
+                <div id="campaigns" class="tabcontent">
+                        <div class="col-sm-12 full_content"> 
+                                  <div class="first_content">
+                                      <div class="row dashboard_btn">
+                                        <div class="dashboard_text">Dashboard</div>
+                                      </div>
+                                      <div class="row tab_row">
+                                        <div class="col-sm-5">
+                                          <div class="campaign_icon dashboard_text"><i class="fa fa-envelope" aria-hidden="true"></i>Campaigns</div>
+                                        </div>
+                                        <div class="col-sm-7 buttons_row_campaign_set">
+                                            <button type="button" class="btn btn_default discard">Discard Changes</button>
+                                            <button type="button" class="btn btn_default save_drafts">Save Drafts</button>
+                                        </div>
+                                     </div>
+                                  </div>
+                             
+                                  <div class="second_content">
+                                          <div class="box_form">
+                                                <h5 align="center" style="padding-top:2%;">Campaign Settings</h5>
+
+
+                                                 <div class="row fill_form">
+                                                          <div class="col-sm-6">From:
+                                                              <input type="text" name="from" class="form_input_half">
+                                                          </div>
+                                                          <div class="col-sm-6">Reply to:
+                                                              <input type="text" name="replyto" class="form_input_half">
+                                                          </div>
+
+                                                 </div>
+
+                                                 <div class="col-sm-12 fill_form">Subject:
+                                                        <input type="text" name="subject" class="form_input_full">
+                                                 </div>
+
+                                                 <h5 align="center" style="padding-top:3%;">Receipients</h5>
+                                                      
+                                                  <div class="col-sm-12 fill_form">Group:
+                                                        <input type="text" name="group" class="form_input_full">
+                                                 </div>
+                                                 <div class="col-sm-12 fill_form">Individual:
+                                                        <input type="text" name="individual" class="form_input_full">
+                                                 </div>    
+
+                                                <h5 align="center" style="padding-top:3%;">Attachments</h5>
+                                                <p style="padding-left:5%;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisi quis eleifend quam adipiscing. Fringilla urna porttitor rhoncus dolor purus non enim. Felis donec et odio.
+                                                </p>
+
+                                                <button type="button" class="btn btn_default attachment">Attachments</button>
+                                          </div> 
+
+                                  </div>
+                        </div>
+
+                      <button type="button" class="btn btn_default next">Next</button>
+
+                </div>
+</body>
+</html>  
