@@ -34,12 +34,30 @@ function toggle_group(source) {
     
 $(document).ready(function()
 {
-    if(($("#groups").hasClass("active"))==true)
-           $("#add_btn").hide();
+  $('#aaa').click(function(){
+  $("#add_comp_Modal").hide();
+  $(".modal-backdrop").hide();
+  $('#myModal').modal('show');
+   });
+
+  //   if(($("#groups").hasClass("active"))==true)
+  //          $("#add_btn").hide();
+  //   $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+  // var target = $(e.target).attr("href") // activated tab
+  // alert(target);
 });
+// });
     
 
-
+function button_modal()
+{
+    // alert();
+    $("#add_comp_Modal").hide();
+    $(".modal-backdrop").hide();
+    // $("#myModal").show();
+    $('#myModal').modal('show');
+    // window.location.reload();
+}
 
 // Get the element with id="defaultOpen" and click on it
 // document.getElementById("defaultOpen").click();

@@ -1,0 +1,435 @@
+<html>
+<head>
+  <title>Campaign Draft | webMOBI</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script type="text/javascript" src="assets/js/jquery.simplePagination.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Gothic+A1|Open+Sans" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="Assets/css/style.css">
+  <script type="text/javascript" src="assets/js/main.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script type = "text/javascript" src = "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.1.min.js"></script>
+
+<style type="text/css">
+input[type="checkbox"]{
+width: 15px; 
+height:15px;
+}
+
+</style>
+</head>
+<body>
+        <div class="tab">
+            <div class="logo_div">
+              <a href="#"><img src="assets/images/WebMobi.png"></a>
+            </div>
+            <button class="tablinks active" id="defaultOpen"><img src="assets/images/campaigns.png"></button>
+            <button class="tablinks"><img src ="assets/images/audience.png"></button>
+        </div>
+
+
+
+      <div id="campaign_draft" class="tabcontent">
+        <div class="col-sm-12 full_content">
+            <div class="first_content">
+                      <div class="row dashboard_btn">
+                          <div class="dashboard_text">Dashboard</div>
+                      </div>
+                      <div class="row tab_row">
+                          <div class="col-sm-5">
+                            <div class="campaign_icon dashboard_text"><i class="fa fa-envelope" aria-hidden="true"></i>Campaigns</div>
+                          
+                          </div>
+                          <div class="col-sm-7 buttons_row_draft">
+                        
+                              <button type="button" class="btn btn_default inputs" id="discard_changes">Discard Changes</button>
+                              <button type="button" class="btn btn_default inputs" id="save_draft">Save Draft</button>
+                          </div>
+                      </div>
+            </div>
+
+            <div class="second_content">
+                <div class="row top_bar">
+                    <h4 style="display:inline;padding-top:1%;padding-bottom:1%;">Campaign Name</h4>
+                </div>
+            </div>
+          
+            <div class="draft_body">
+                  <div class="row top_bar_draft">
+                   
+                          <div class="top_bar_draft_2">
+                            <ul class="nav nav-tabs" role="tablist">
+                                  <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#use_template"><i class="far fa-file"></i>Use a template</a>
+                                  </li>
+                                  <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#import_html"><i class="fas fa-download"></i>Import HTML</a>
+                                  </li>
+                                  <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#create_html"><i class="fas fa-edit"></i>Create HTML</a>
+                                  </li>
+                                  <li class="nav-item preview">
+                                    <a class="nav-link" data-toggle="tab" href="#preview"><i class="far fa-eye"></i>Preview</a>
+                                  </li>
+        
+                            </ul>
+
+                         
+                    </div>
+
+
+                    <div class="draft_area">
+                        <div class="email_blank_text">
+
+                             <p>Your Email is blank.Get started by:</p>
+                             <p>1.Using preferred template</p>
+                             <p>2.Importing HTML</p>
+                             <p>3.Adding the Components</p>
+                        </div>
+                       <!-- <div class="row">
+                            <div class="add_img_text" id="add_1">
+                                  <p align="center">Add Image or Text</p>
+                            </div>
+
+
+                           <div class="add_img_text" id="add_2">
+                                  <p align="center">Add Image or Text</p>
+                           </div> 
+                        </div>    -->
+
+                    </div>
+
+                    <div class="add_comp_btn">           
+                             
+                             <button type="button" class="btn btn_default inputs" id="add_comp"data-toggle="modal" data-target="#social_Modal"><i class="fas fa-plus"></i>Add Components</button>
+                              <!--     <div class="modal fade" id="add_comp_Modal" role="dialog">
+                                  <div class="modal-dialog">
+                            
+                                  <div class="modal-content">
+                                    
+                                    <div class="modal-body">
+                                        <div class="row add_comp_body">
+                                                  <div>
+                                                    <button class="btn dropdown-toggle modal_btn" type="button" data-toggle="dropdown"><img src="assets/images/text-1.png">
+                                                    </button>
+                                                        <ul class="dropdown-menu">
+                                                          <li><a href="#">HTML</a></li>
+                                                          <li><a href="#">CSS</a></li>
+                                                          <li><a href="#">JavaScript</a></li>
+                                                        </ul>
+                                                        <p>Text</p>     
+                                                  </div>
+                                                  <div>
+                                                    <button class="btn dropdown-toggle modal_btn" type="button" data-toggle="dropdown"><img src="assets/images/image.png">
+                                                    </button>
+                                                        <ul class="dropdown-menu">
+                                                          <li><a href="#">HTML</a></li>
+                                                          <li><a href="#">CSS</a></li>
+                                                          <li><a href="#">JavaScript</a></li>
+                                                        </ul>
+                                                        <p>Image</p>
+                                                  </div>
+                                                  <div>
+                                                    <button class="btn dropdown-toggle modal_btn" type="button" data-toggle="dropdown"><img src="assets/images/blocks.png">
+                                                    </button>
+                                                        <ul class="dropdown-menu">
+                                                          <li><a href="#">Two blocks</a></li>
+                                                          <li><a href="#">Three blocks</a></li>
+                                                        </ul>
+                                                        <p>Blocks</p>
+                                                  </div>
+
+                                                  
+                                                  <div>
+                                                    <button class="btn dropdown-toggle modal_btn" type="button" id="aaa"><img src="assets/images/button.png">
+                                                    </button>
+                                                
+                                                          
+                                                          <p>Button</p>
+                                                  </div>        
+                                                  <div>
+                                                    <button class="btn dropdown-toggle modal_btn" type="button" data-toggle="dropdown"><img src="assets/images/social-media.png">
+                                                    </button>
+                                                          <ul class="dropdown-menu">
+                                                            <li><a href="#">HTML</a></li>
+                                                            <li><a href="#">CSS</a></li>
+                                                            <li><a href="#">JavaScript</a></li>
+                                                          </ul>
+                                                          <p>Social</p>
+                                                  </div>
+                                        </div>
+                                    
+                                    </div>
+                                   
+                                  </div>
+                                  
+                                </div>
+                              </div> -->
+
+                              <!--          <div id="button_Modal" class="modal fade" role="dialog" style="display:none;">
+                              <div class="modal-dialog">
+
+                                
+                                <div class="modal-content">
+                                  <div class="modal-header modal_heading">
+                                      <button type="button" id="button_btn">BUTTON</button>
+                                    
+                                  </div>
+                                  <div class="modal-body">
+                                        <div class="link_to_div">
+                                              <p style="font-weight:500;">Link to</p>
+                                              <input type="text" class="link" placeholder="https://www.webmobi.com">
+                                        </div>
+
+                                        <div class="row">
+                                              <div class="col-sm-6">
+                                                <p>Button Text</p>
+                                                <p class="text_padding">Text</p>
+                                                <input type="text" class="btn_text" placeholder="BUTTON">
+
+                                                <p class="text_padding">Font Size</p>
+                                                <input type="text" class="font_size" id="fsize" placeholder="18px">
+                                               
+                                                <div class="row font_col">
+                                                      <p class="text_padding">Font Color</p>
+                                                      <div class="row fc">
+                                                            <input type="text" id="fcolor_inp1" class="font_color" placeholder="#ffffff">
+                                                            <input type="text" id="fcolor_inp2" class="font_color">
+                                                      </div>
+                                                </div>      
+
+                                              </div>
+                                              <div class="col-sm-6">
+                                                 <p>Button Style</p>
+                                                 <div class="row">
+                                                      <div class="col-sm-3 width_ht">
+                                                            <p class="text_padding">Width</p>
+                                                            <input id="width_input" type="text" class="width_inp" placeholder="150px">
+                                                      </div>
+
+                                                      <div class="col-sm-3">
+                                                            <p class="text_padding">Height</p>
+                                                            <input id="height_input" type="text" class="ht_inp" placeholder="150px">
+                                                      </div>      
+                                                 </div>
+
+                                                   <div class="row">
+                                                      <div class="col-sm-3 width_ht">
+                                                            <p class="text_padding">Margin_Top</p>
+                                                            <input id="margin_top" type="text" class="text" placeholder="150px">
+                                                      </div>
+
+                                                      <div class="col-sm-3">
+                                                            <p class="text_padding">Margin_Bottom</p>
+                                                            <input id="margin_bottom" type="text" class="text" placeholder="150px">
+                                                      </div>      
+                                                         <div class="row font_col">
+                                                      <p class="text_padding" style="margin-left: 14px;">Background Color</p>
+                                                      <div class="row backg_color">
+                                                            <input type="text" class="font_color" id="bgcolor_inp1" placeholder="#ffffff">
+                                                            <input type="text" class="font_color" id="bgcolor_inp2">
+                                                      </div>
+                                                </div>      
+
+                                                 </div>
+                                                 
+                                              </div>
+                                        </div>      
+                                  </div>
+                                  <div class="modal-footer">
+                                      
+                                           <button type="button" id="ok_btn">OK</button>
+                                           <button type="button" id="cancel_btn" data-dismiss="modal">Cancel</button>
+                                     
+                                  </div>
+                                </div>
+
+                              </div>
+                              </div> -->
+                              <div class="modal" id="social_Modal">
+                                        <div class="modal-dialog">
+                                          <div class="modal-content">
+                                              <div class="row top_row_social">
+                                            <span>Size:</span>
+                                            <select>
+                                              <option>Small</option>
+                                              <option>Medium</option>
+                                              <option>Large</option>
+                                            </select>
+
+                                            <span id="align">Align:</span>
+                                            <select>
+                                              <option>Left</option>
+                                              <option>Center</option>
+                                              <option>Right</option>
+                                            </select>
+
+                                          </div>  
+
+                                           
+                                            <div class="modal-header modal_heading_social">
+                                               <div class="col-sm-4">
+                                              <span><i class="fab fa-facebook" id="fb_icon"></i></span>
+                                              <span class="social_span">Facebook</span>
+                                            </div>
+                                            <div class="col-sm-4">
+                                              <span class="social_span"><i class="fab fa-twitter" id="twitter_icon"></i></span>
+                                              <span class="social_span">Twitter</span>
+                                            </div>
+                                            <div class="col-sm-4">
+                                              <span class="social_span"><i class="fab fa-linkedin" id="in_icon"></i></span>
+                                              <span class="social_span">LinkedIn</span>
+                                            </div>
+                                             
+                                            </div>
+
+                                            
+                                            <div class="modal-body">
+                                                 <div class="row">
+                                                      <div class="col-sm-3">
+                                                        <p>Social Link</p>
+                                                      </div>
+
+                                                      <div class="col-sm-4">
+                                                        <p>Link</p>
+                                                      </div>
+
+                                                      <div class="col-sm-3 social_text">
+                                                        <p>Text</p>
+                                                      </div>
+
+                                                      <div class="col-sm-1">
+                                                      </div>
+                                                      
+                                                      <div class="col-sm-1">
+                                                      </div>  
+
+
+                                                </div>
+
+                                                <div class="row choice">
+                                                  <div class="col-sm-3">
+                                                    <select class="select_box">
+                                                       <option>Facebook</option>
+                                                       <option>Twitter</option>
+                                                       <option>LinkedIn</option>
+                                                    </select>   
+                                                  </div>
+
+                                                  <div class="col-sm-4">
+                                                       <input type="text" class="social_inp_box" placeholder="https://www.facebook.com">
+                                                  </div>
+
+                                                  <div class="col-sm-3 social_text ">
+                                                    <input type="text" class="social_inp_box social_text_inp" placeholder="Facebook">
+                                                  </div>
+                                                  <div class="col-sm-1 cancel_row cross_icon">
+                                                     <span><i class="fas fa-times"></i></span>
+                                                  </div>
+                                                      
+                                                  <div class="col-sm-1 add_row">
+                                                      <span><i class="fas fa-plus plus_icon"></i></span>
+                                                  </div> 
+
+                                                </div>
+
+
+
+
+                                                 <div class="row choice">
+                                                  <div class="col-sm-3">
+                                                    <select class="select_box">
+                                                       <option>Facebook</option>
+                                                       <option>Twitter</option>
+                                                       <option>LinkedIn</option>
+                                                    </select>   
+                                                  </div>
+
+                                                  <div class="col-sm-4">
+                                                       <input type="text" class="social_inp_box"  placeholder="https://www.facebook.com">
+                                                  </div>
+
+                                                  <div class="col-sm-3 social_text">
+                                                    <input type="text" class="social_inp_box social_text_inp" placeholder="Facebook">
+                                                  </div>
+                                                  <div class="col-sm-1 cancel_row cross_icon">
+                                                     <span><i class="fas fa-times"></i></span>
+                                                  </div>
+                                                      
+                                                  <div class="col-sm-1 add_row">
+                                                      <span><i class="fas fa-plus plus_icon"></i></span>
+                                                  </div> 
+
+                                                </div>
+
+
+
+                                                <div class="row choice">
+                                                      <div class="col-sm-3">
+                                                        <select class="select_box">
+                                                           <option>Facebook</option>
+                                                           <option>Twitter</option>
+                                                           <option>LinkedIn</option>
+                                                        </select>   
+                                                      </div>
+
+                                                      <div class="col-sm-4">
+                                                           <input type="text" class="social_inp_box"  placeholder="https://www.facebook.com">
+                                                      </div>
+
+                                                      <div class="col-sm-3 social_text">
+                                                        <input type="text"  class="social_inp_box social_text_inp"  placeholder="Facebook">
+                                                      </div>
+                                                      <div class="col-sm-1 cancel_row cross_icon">
+                                                         <span><i class="fas fa-times"></i></span>
+                                                      </div>
+                                                          
+                                                      <div class="col-sm-1 add_row">
+                                                          <span><i class="fas fa-plus plus_icon"></i></span>
+                                                      </div> 
+
+                                                </div>
+
+
+                                                <div class="row add_more">
+                                                      <a href="#">Add More</a>
+                                                </div>
+                                            </div>
+
+                                            
+                                            <div class="modal-footer">
+                                               <button type="button" class="ok_btn">OK</button>
+                                               <button type="button" class="cancel_btn" data-dismiss="modal">Cancel</button>
+                                              
+                                            </div>
+
+                                          </div>
+                                        </div>
+                              </div>
+
+                           
+                    </div>
+
+
+
+                  
+            </div>  
+
+            <!-- <div class="next_btn_draft_div">           
+                             <button type="button" class="btn btn_default " id="next_btn_draft">Next</button>
+            </div>   -->    
+
+        </div>
+
+      </div>
+
+
+
+</body>
+</html>  
