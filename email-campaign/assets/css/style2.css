@@ -96,12 +96,6 @@
 .second_content{
   background-color: #fff;
   margin-top: 3%;
-  /* margin:1%; */
-}
-.second_content_table
-{
-  background-color: #fff;
-  
 }
 .settings
 {
@@ -742,7 +736,7 @@ select {
 {
  /*position: absolute;*/
  /*top: 10px;*/
- margin-top:24%;
+ /*margin-top:22%;*/
  margin-left: 9%;
  /*right: 100px;
  bottom: 0;
@@ -754,7 +748,7 @@ select {
 
 .add_comp_body
 {
-  margin-left:10%;
+  margin-left: 3%;
 }
 .add_comp_body div
 {
@@ -994,69 +988,4 @@ select {
 {
   border-radius: 3px;
   border:1px solid #d4d8dd; 
-}
-.table_modal_attendees
-{
-  width:100%;
-}
-.attendee_entry
-{
-  /* width:900px; */
-}
-
-.table_modal_attendees td
-{
-  border: none !important;
-}
-
-.aud_name
-{
-  white-space: nowrap; 
-  overflow: hidden;
-  text-overflow: ellipsis; 
-}
-
-#button_Modal input
-{
-  border-radius: 3px;
-  border:1px solid #d4d8dd; 
-}
-/*#button_Modal p
-{
-  padding-top: 5%;
-}
-*/
-
-/*.nav-tabs
-{
-  border:none !important;
-}
-.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active
-{
-  border:none !important;
-}*/
-.buttons_row a:active ,.buttons_row a:focus
-{
-  color: #000;
-  border-bottom: 3px solid #FF9900 !important;
-  border: none;
-  outline: none;
-}
-.nav-tabs .nav-link
-{
-  border:none !important;
-}
-.nav-tabs
-{
-  color:#000;
-  border:none !important;
-}
-.buttons_row a
-{
-  color: #000;
-  font-weight:500;
-}
-.attendee_entry
-{
-  display:block !important;
 }

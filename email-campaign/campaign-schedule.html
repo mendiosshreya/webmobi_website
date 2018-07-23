@@ -23,7 +23,7 @@
         <button class="tablinks active" onclick="opentab(event, 'campaigns')" id="defaultOpen"><img src="assets/images/campaigns.png"></button>
         <button class="tablinks" onclick="opentab(event, 'audience')"><img src="assets/images/audience.png"></button>
     </div>
-    <div id="campaign_settings" class="tabcontent">
+    <div id="campaign_schedule" class="tabcontent">
         <div class="col-sm-12 full_content">
             <div class="first_content">
                 <div class="row dashboard_btn">
@@ -42,32 +42,39 @@
             <div class="second_content">
                 <div class="box_form">
                     <h5 align="center" style="padding-top:2%;">Campaign Settings</h5>
-                    <div class="row fill_form">
-                        <div class="col-sm-6">From:
-                            <input type="text" name="from" class="form_input_half">
-                        </div>
-                        <div class="col-sm-6">Reply to:
-                            <input type="text" name="replyto" class="form_input_half">
-                        </div>
+                    <div class="col-sm-12 fill_form">Send a Test Email:
+                        <input type="text" name="test_email" class="form_input_full">
                     </div>
-                    <div class="col-sm-12 fill_form">Subject:
-                        <input type="text" name="subject" class="form_input_full">
-                    </div>
-                    <h5 align="center" style="padding-top:3%;">Receipients</h5>
-                    <div class="col-sm-12 fill_form">Group:
-                        <input type="text" name="group" class="form_input_full">
-                    </div>
-                    <div class="col-sm-12 fill_form">Individual:
-                        <input type="text" name="individual" class="form_input_full">
-                    </div>
-                    <h5 align="center" style="padding-top:3%;">Attachments</h5>
-                    <p style="padding-left:5%;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisi quis eleifend quam adipiscing. Fringilla urna porttitor rhoncus dolor purus non enim. Felis donec et odio.
-                    </p>
-                    <button type="button" class="btn btn_default attachment">Attachments</button>
+                    <h5 align="center" style="padding-top:2%;">Send or Schedule this Campaign</h5>
+                    <form action="#" class="buttons_radio">
+                        <!--  <label class="radio-inline modal_radio">
+                                                            <input type="radio" name="optradio">
+                                                            <span class="checkmark"></span>
+                                                            <span>Send now</span>
+                                                        </label>
+
+                                                        <label class="radio-inline modal_radio">
+                                                            <input type="radio" name="optradio">
+                                                            <span class="checkmark"></span>
+                                                            <span>Send on Schedule</span>
+                                                        </label> -->
+                        <label class="radio_btn">
+                            <input type="radio" name="schedule">Send now
+                        </label>
+                        <label>
+                            <input type="radio" name="schedule">Send on Schedule
+                        </label>
+                        <!-- <input type="text" placeholder="">  -->
+                        <fieldset>
+                            <div>
+                                <input id="party" type="datetime-local" name="partydate" value="2018-07-17T08:30">
+                            </div>
+                        </fieldset>
+                    </form>
                 </div>
             </div>
         </div>
-        <button type="button" class="btn btn_default next" onclick="location.href='campaign-schedule.html'">Next</button>
+        <button type="button" class="btn btn_default send">Send</button>
     </div>
 </body>
 

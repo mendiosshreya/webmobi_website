@@ -1,64 +1,378 @@
 <html>
+
 <head>
-  <title>EMAIL | webMOBI</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-  <script type="text/javascript" src="assets/js/jquery.simplePagination.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css?family=Gothic+A1|Open+Sans" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="Assets/css/style.css">
-  <script type="text/javascript" src="assets/js/main.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-  <script type = "text/javascript" src = "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.1.min.js"></script>
-
-<style type="text/css">
-input[type="checkbox"]{
-width: 15px; 
-height:15px;
-}
-</style>
+    <title>EMAIL | webMOBI</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.simplePagination.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Gothic+A1|Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="Assets/css/style.css">
+    <script type="text/javascript" src="assets/js/main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.1.min.js"></script>
+    <style type="text/css">
+    input[type="checkbox"] {
+        width: 15px;
+        height: 15px;
+    }
+    </style>
 </head>
-  <body>
-      <div class="tab">
+
+<body>
+    <div class="tab">
         <div class="logo_div">
-          <a href="#"><img src="assets/images/WebMobi.png"></a>
+            <a href="#"><img src="assets/images/WebMobi.png"></a>
         </div>
-        <button class="tablinks active" onclick="opentab(event, 'campaigns')" id="defaultOpen"><img src="assets/images/campaigns.png"></button>
-        <button class="tablinks" onclick="opentab(event, 'audience')"><img src ="assets/images/audience.png"></button>
-      </div>
-
-
-      <div id="campaigns" class="tabcontent">
-          <div class="col-sm-12 full_content">
+        <button class="tablinks active" id="defaultOpen" onclick="opentab(event, 'campaigns')"><img src="assets/images/campaigns.png"></button>
+        <button class="tablinks" id="audience_tab" onclick="opentab(event, 'audience')"><img src="assets/images/audience.png"></button>
+    </div>
+    <div id="campaigns" class="tabcontent">
+        <div class="col-sm-12 full_content">
             <div class="first_content">
                 <div class="row dashboard_btn">
-                  <div class="dashboard_text">Dashboard</div>
+                    <div class="dashboard_text">Dashboard</div>
                 </div>
                 <div class="row tab_row">
-                  <div class="col-sm-5">
-                    <div class="campaign_icon dashboard_text"><i class="fa fa-envelope" aria-hidden="true"></i>Campaigns</div>
-                  </div>
-                  <div class="col-sm-7 buttons_row">
-                   <!--  <ul class="nav nav-tabs" role="tablist">
-                              <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#active_camp">8 Active campaigns</a>
-                              </li>
-                              <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#drafts">3 Drafts</a>
-                              </li>
-                    </ul> -->
-                    <span  id="active_campaigns" class="active_campaigns"><a>8 Active campaigns</a></span>
-                    <span class="drafts">3 Drafts</span>
-                    <button type="button" class="btn btn_default create_btn">Create Campaigns</button>
-                  </div>
-               </div>
-             </div>
-             <div class="second_content" id="starting_content">
+                    <div class="col-sm-5">
+                        <div class="campaign_icon dashboard_text"><i class="fa fa-envelope" aria-hidden="true"></i>Campaigns</div>
+                    </div>
+                    <div class="col-sm-7 row buttons_row">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a id="active_campaigns" class="nav-link active" data-toggle="tab" href="#active_camp">8 Active campaigns</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#draft">Drafts</a>
+                            </li>
+                        </ul>
+                        <!-- <span  class="active_campaigns"><a>8 Active campaigns</a></span>
+                    <span class="drafts">3 Drafts</span> -->
+                        <button type="button" class="btn btn_default create_btn active_campaigns" onclick="open_draft()">Create Campaigns</button>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content">
+                <div id="active_camp" class="container tab-pane active">
+                    <br>
+                    <div class="second_content" id="starting_content">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table_start">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Campaign Name</th>
+                                        <th>Date</th>
+                                        <th>Report</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Campaign Name </td>
+                                        <td>22 May 2018 11:59:00 AM </td>
+                                        <td>Sending</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button type="button" class="btn dropdown-toggle settings" data-toggle="dropdown"><i class="fas fa-cog"></i>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="#">Link 1</a>
+                                                    <a class="dropdown-item" href="#">Link 2</a>
+                                                    <a class="dropdown-item" href="#">Link 3</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Campaign Name </td>
+                                        <td>22 May 2018 11:59:00 AM </td>
+                                        <td>Sending</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button type="button" class="btn dropdown-toggle settings" data-toggle="dropdown"><i class="fas fa-cog"></i>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="#">Link 1</a>
+                                                    <a class="dropdown-item" href="#">Link 2</a>
+                                                    <a class="dropdown-item" href="#">Link 3</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Campaign Name </td>
+                                        <td>22 May 2018 11:59:00 AM </td>
+                                        <td>Sending</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button type="button" class="btn dropdown-toggle settings" data-toggle="dropdown"><i class="fas fa-cog"></i>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="#">Link 1</a>
+                                                    <a class="dropdown-item" href="#">Link 2</a>
+                                                    <a class="dropdown-item" href="#">Link 3</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Campaign Name </td>
+                                        <td>22 May 2018 11:59:00 AM </td>
+                                        <td>Sending</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button type="button" class="btn dropdown-toggle settings" data-toggle="dropdown"><i class="fas fa-cog"></i>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="#">Link 1</a>
+                                                    <a class="dropdown-item" href="#">Link 2</a>
+                                                    <a class="dropdown-item" href="#">Link 3</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Campaign Name </td>
+                                        <td>22 May 2018 11:59:00 AM </td>
+                                        <td>Sending</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button type="button" class="btn dropdown-toggle settings" data-toggle="dropdown"><i class="fas fa-cog"></i>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="#">Link 1</a>
+                                                    <a class="dropdown-item" href="#">Link 2</a>
+                                                    <a class="dropdown-item" href="#">Link 3</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>Campaign Name </td>
+                                        <td>22 May 2018 11:59:00 AM </td>
+                                        <td>Sending</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button type="button" class="btn dropdown-toggle settings" data-toggle="dropdown"><i class="fas fa-cog"></i>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="#">Link 1</a>
+                                                    <a class="dropdown-item" href="#">Link 2</a>
+                                                    <a class="dropdown-item" href="#">Link 3</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>Campaign Name </td>
+                                        <td>22 May 2018 11:59:00 AM </td>
+                                        <td>Sending</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button type="button" class="btn dropdown-toggle settings" data-toggle="dropdown"><i class="fas fa-cog"></i>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="#">Link 1</a>
+                                                    <a class="dropdown-item" href="#">Link 2</a>
+                                                    <a class="dropdown-item" href="#">Link 3</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td>Campaign Name </td>
+                                        <td>22 May 2018 11:59:00 AM </td>
+                                        <td>Sending</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button type="button" class="btn dropdown-toggle settings" data-toggle="dropdown"><i class="fas fa-cog"></i>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="#">Link 1</a>
+                                                    <a class="dropdown-item" href="#">Link 2</a>
+                                                    <a class="dropdown-item" href="#">Link 3</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div id="draft" class="container tab-pane fade">
+                    <br>
+                    <!-- <p>ppppp</p> -->
+                    <div class="second_content">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table_start">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Campaign Name</th>
+                                        <th>Date</th>
+                                        <th>Report</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Campaign Name </td>
+                                        <td>22 May 2018 11:59:00 AM </td>
+                                        <td>Sent</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button type="button" class="btn dropdown-toggle settings" data-toggle="dropdown"><i class="fas fa-cog"></i>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="#">Link 1</a>
+                                                    <a class="dropdown-item" href="#">Link 2</a>
+                                                    <a class="dropdown-item" href="#">Link 3</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Campaign Name </td>
+                                        <td>22 May 2018 11:59:00 AM </td>
+                                        <td>Sent</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button type="button" class="btn dropdown-toggle settings" data-toggle="dropdown"><i class="fas fa-cog"></i>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="#">Link 1</a>
+                                                    <a class="dropdown-item" href="#">Link 2</a>
+                                                    <a class="dropdown-item" href="#">Link 3</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Campaign Name </td>
+                                        <td>22 May 2018 11:59:00 AM </td>
+                                        <td>Sent</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button type="button" class="btn dropdown-toggle settings" data-toggle="dropdown"><i class="fas fa-cog"></i>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="#">Link 1</a>
+                                                    <a class="dropdown-item" href="#">Link 2</a>
+                                                    <a class="dropdown-item" href="#">Link 3</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Campaign Name </td>
+                                        <td>22 May 2018 11:59:00 AM </td>
+                                        <td>Sent</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button type="button" class="btn dropdown-toggle settings" data-toggle="dropdown"><i class="fas fa-cog"></i>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="#">Link 1</a>
+                                                    <a class="dropdown-item" href="#">Link 2</a>
+                                                    <a class="dropdown-item" href="#">Link 3</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Campaign Name </td>
+                                        <td>22 May 2018 11:59:00 AM </td>
+                                        <td>Sent</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button type="button" class="btn dropdown-toggle settings" data-toggle="dropdown"><i class="fas fa-cog"></i>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="#">Link 1</a>
+                                                    <a class="dropdown-item" href="#">Link 2</a>
+                                                    <a class="dropdown-item" href="#">Link 3</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>Campaign Name </td>
+                                        <td>22 May 2018 11:59:00 AM </td>
+                                        <td>Sent</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button type="button" class="btn dropdown-toggle settings" data-toggle="dropdown"><i class="fas fa-cog"></i>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="#">Link 1</a>
+                                                    <a class="dropdown-item" href="#">Link 2</a>
+                                                    <a class="dropdown-item" href="#">Link 3</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>Campaign Name </td>
+                                        <td>22 May 2018 11:59:00 AM </td>
+                                        <td>Sent</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button type="button" class="btn dropdown-toggle settings" data-toggle="dropdown"><i class="fas fa-cog"></i>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="#">Link 1</a>
+                                                    <a class="dropdown-item" href="#">Link 2</a>
+                                                    <a class="dropdown-item" href="#">Link 3</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td>Campaign Name </td>
+                                        <td>22 May 2018 11:59:00 AM </td>
+                                        <td>Sent</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button type="button" class="btn dropdown-toggle settings" data-toggle="dropdown"><i class="fas fa-cog"></i>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="#">Link 1</a>
+                                                    <a class="dropdown-item" href="#">Link 2</a>
+                                                    <a class="dropdown-item" href="#">Link 3</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="second_content" id="starting_content">
               <div class="table-responsive">
                   <table class="table table-bordered table_start">
                     <thead>
@@ -211,156 +525,219 @@ height:15px;
                     </tbody>
                   </table>
               </div> 
-            </div>
+             </div> -->
         </div>
-      </div>
-
-      <div id="audience" class="tabcontent" style="display:none;">
+    </div>
+    <div id="audience" class="tabcontent" style="display:none;">
         <div class="col-sm-12 full_content">
             <div class="first_content">
                 <div class="row dashboard_btn">
-                  <div class="dashboard_text">Dashboard</div>
+                    <div class="dashboard_text">Dashboard</div>
                 </div>
                 <div class="row tab_row">
-                  <div class="col-sm-5">
-                    <div class="campaign_icon dashboard_text"><i class="fas fa-users" aria-hidden="true"></i>Audience</div>
-                    <div class="input-group input-search">
-                          <div class="input-group-prepend">
-                             <div class="input-group-text search-image"><img src="Assets/images/search-2.png"></div>
-                          </div>
-                    <input type="text" id="search_events_name" class="form-control search-audience">
-                    </div>
-                  </div>
-                  <div class="col-sm-7 buttons_row">
-                    <button type="button" class="btn btn_default inputs" id="add_btn" data-toggle="modal" data-target="#myModal">Add User</button>
-
-                    <div class="modal" id="myModal">
-                          <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-
-                              <!-- Modal Header -->
-                              <div class="modal-header">
-                                 <h5 class="modal-title">Add New Group</h5>
-                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                              </div>
-
-                              <!-- Modal body -->
-                              <div class="row modal-body">
-                                  <div class="col-sm-9"><span style="font-weight:500;">Group Name:</span>
-                                        <input type="text" name="from" class="form_input_modal" placeholder="Media">
-                                  </div>
-
-                                  <div class="col-sm-3">
-                                         <div class="dropdown">
-                                             <button type="button" class="btn dropdown-toggle select_modal" data-toggle="dropdown">Select from events
-                                             </button>
-                                            <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="#">Link 1</a>
-                                                    <a class="dropdown-item" href="#">Link 2</a>
-                                                    <a class="dropdown-item" href="#">Link 3</a>
-                                            </div>
-                                        </div>
-                                  </div>  
-
-                                  <div class="bar">
-                                    <p align="center">Add Attendees</p>
-                                  </div>  
-                                  <br>
-
-                                  <div class="input-group search_modal">
-                                        <div class="input-group-prepend">
-                                           <div class="input-group-text search-image"><img src="Assets/images/search-2.png"></div>
-                                        </div>
-                                  <input type="text" id="search_attendees" class="form-control search_attendees" placeholder="Search Attendees">
-                                  </div>
-
-                                  <br>
-
-                                  <div class="attendees_list">
-                                      <div class="row attendee_entry">
-                                               <input type="checkbox" name="attendee" value="Alex Thompson">Alex Thompson
-                                               <div class="btn_div">
-                                                  <button class="btn_add_modal">Add</button> 
-                                               </div>   
-                                      </div>      
-
-                                       <div class="row attendee_entry">
-                                               <input type="checkbox" name="attendee" value="Alex Thompson">Alex Thompson
-                                               <button class="btn_add_modal">Add</button> 
-                                      </div>     
-                                       <div class="row attendee_entry">
-                                               <input type="checkbox" name="attendee" value="Alex Thompson">Alex Thompson
-                                               <button class="btn_add_modal">Add</button> 
-                                      </div>     
-                                       <div class="row attendee_entry">
-                                               <input type="checkbox" name="attendee" value="Alex Thompson">Alex Thompson
-                                               <button class="btn_add_modal">Add</button> 
-                                      </div>     
-                                       <div class="row attendee_entry">
-                                               <input type="checkbox" name="attendee" value="Alex Thompson">Alex Thompson
-                                               <button class="btn_add_modal">Add</button> 
-                                      </div>     
-                                  </div>  
-
-                                   
-
-                              </div>
-
-                              <!-- Modal footer -->
-                              <div class="modal-footer">
-                                <button type="button" class="btn modal_save" data-dismiss="modal">Save</button>
-                              </div>
-
+                    <div class="col-sm-5">
+                        <div class="campaign_icon dashboard_text"><i class="fas fa-users" aria-hidden="true"></i>Audience</div>
+                        <div class="input-group input-search">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text search-image"><img src="Assets/images/search-2.png"></div>
                             </div>
-                          </div>
+                            <input type="text" id="search_events_name" class="form-control search-audience">
+                        </div>
                     </div>
-
-
-
-
-
-                    <button type="button" class="btn btn_default inputs" id="delete_btn">Delete User</button>
-                    <button type="button" class="btn btn_default inputs" id="send_btn">Send Email</button>
-                  </div>
+                    <div class="col-sm-7 buttons_row">
+                        <button type="button" class="btn btn_default inputs" id="add_btn">Add User</button>
+                        <button type="button" class="btn btn_default inputs" id="delete_btn">Delete User</button>
+                        <button type="button" class="btn btn_default inputs" id="send_btn">Send Email</button>
+                    </div>
                 </div>
             </div>
-
             <div class="second_content">
                 <div class="row top_bar">
-                       <!--  <div class="nav_options"><a>All</a></div>
+                    <!--  <div class="nav_options"><a>All</a></div>
                         <div class="nav_options"><a>Audience</a></div>
                         <div class="nav_options"><a>Registered Users</a></div>
                         <div class="nav_options"><a>Checked-In Users</a></div> 
                         <div class="nav_options"><a>Groups</a></div> -->
-                        <ul class="nav nav-tabs" role="tablist">
-                              <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#all">All</a>
-                              </li>
-                              <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#audience2">Audience</a>
-                              </li>
-                              <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#reg_users">Registered Users</a>
-                              </li>
-                              <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#checked_in_users">Checked-In Users</a>
-                              </li>
-                              <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#groups">Groups</a>
-                              </li>
-                        </ul>
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#all">All</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#audience2">Audience</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#reg_users">Registered Users</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#checked_in_users">Checked-In Users</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" id="groups_tab" href="#groups">Groups</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-
             <div class="tab-content">
-                    <div id="all" class="container tab-pane active"><br>
-                        <div class="second_content">
-                          <div class="offset-sm-8 col-sm-4 second_buttons_row">
-                              <button type="button" class="btn btn_default inputs" id="import">Import XLS</button>
-                              <button type="button" class="btn btn_default inputs" id="export">Export XLS</button>
-                          </div>    
-
-                          <div class=" form1 row fheading">
+                <div id="all" class="container tab-pane active">
+                    <br>
+                    <div class="second_content_table">
+                        <div class="offset-sm-8 col-sm-4 second_buttons_row">
+                            <button type="button" class="btn btn_default inputs" id="import">Import XLS</button>
+                            <button type="button" class="btn btn_default inputs" id="export">Export XLS</button>
+                        </div>
+                        <table class="table table_audience">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <input onClick="toggle(this)" type="checkbox" name="select_all_audience">
+                                    </th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Company</th>
+                                    <th>Status</th>
+                                    <th>Designation</th>
+                                    <th>Profile URL</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" name="audience_ckbox">
+                                    </td>
+                                    <td class="aud_name">
+                                        <p>Alex Thompson</p>
+                                    </td>
+                                    <td class="aud_mail">
+                                        <p>alexthompson27@gmail.com</p>
+                                    </td>
+                                    <td class="aud_company">
+                                        <p>Mendios Technologies</p>
+                                    </td>
+                                    <td class="aud_status">
+                                        <select>
+                                            <option>A</option>
+                                            <option>B</option>
+                                            <option>C</option>
+                                        </select>
+                                    </td>
+                                    <td class="aud_designation">
+                                        <p>Marketing Head</p>
+                                    </td>
+                                    <td class="aud_profile_url">
+                                        <p>https://www.google.com</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" name="audience_ckbox">
+                                    </td>
+                                    <td>
+                                        <p>Alex Thompson</p>
+                                    </td>
+                                    <td>
+                                        <p>alexthompson27@gmail.com</p>
+                                    </td>
+                                    <td>
+                                        <p>Mendios Technologies</p>
+                                    </td>
+                                    <td>
+                                        <select>
+                                            <option>A</option>
+                                            <option>B</option>
+                                            <option>C</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <p>Marketing Head</p>
+                                    </td>
+                                    <td>
+                                        <p>https://www.google.com</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" name="audience_ckbox">
+                                    </td>
+                                    <td>
+                                        <p>Alex Thompson</p>
+                                    </td>
+                                    <td>
+                                        <p>alexthompson27@gmail.com</p>
+                                    </td>
+                                    <td>
+                                        <p>Mendios Technologies</p>
+                                    </td>
+                                    <td>
+                                        <select>
+                                            <option>A</option>
+                                            <option>B</option>
+                                            <option>C</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <p>Marketing Head</p>
+                                    </td>
+                                    <td>
+                                        <p>https://www.google.com</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" name="audience_ckbox">
+                                    </td>
+                                    <td>
+                                        <p>Alex Thompson</p>
+                                    </td>
+                                    <td>
+                                        <p>alexthompson27@gmail.com</p>
+                                    </td>
+                                    <td>
+                                        <p>Mendios Technologies</p>
+                                    </td>
+                                    <td>
+                                        <select>
+                                            <option>A</option>
+                                            <option>B</option>
+                                            <option>C</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <p>Marketing Head</p>
+                                    </td>
+                                    <td>
+                                        <p>https://www.google.com</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" name="audience_ckbox">
+                                    </td>
+                                    <td>
+                                        <p>Alex Thompson</p>
+                                    </td>
+                                    <td>
+                                        <p>alexthompson27@gmail.com</p>
+                                    </td>
+                                    <td>
+                                        <p>Mendios Technologies</p>
+                                    </td>
+                                    <td>
+                                        <select>
+                                            <option>A</option>
+                                            <option>B</option>
+                                            <option>C</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <p>Marketing Head</p>
+                                    </td>
+                                    <td>
+                                        <p>https://www.google.com</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- <div class=" form1 row fheading">
                                 <div class="col-sm-1 col1">
                                    <input onClick="toggle(this)" name="select-all" id="select-all" type="checkbox" value="">
                                 </div>
@@ -390,9 +767,8 @@ height:15px;
                                         <p>Profile URL</p>
                                     </div> 
                       
-                          </div> 
-
-                          <div id="row1" class="form2 row f">
+                          </div>  -->
+                        <!-- <div id="row1" class="form2 row f">
 
                                     <div class="col-sm-1 col1">
                                       <input name="ck" type="checkbox" value="">
@@ -424,9 +800,8 @@ height:15px;
                                         <p>https://www.google.com</p>
                                     </div> 
                       
-                          </div>
-
-                          <div id="row1" class="form2 row f">
+                          </div> -->
+                        <!-- <div id="row1" class="form2 row f">
 
                                     <div class="col-sm-1 col1">
                                       <input name="ck" type="checkbox" value="">
@@ -457,8 +832,8 @@ height:15px;
                                         <p>https://www.google.com</p>
                                     </div> 
                       
-                          </div>
-                          <div id="row1" class="form2 row f">
+                          </div> -->
+                        <!-- <div id="row1" class="form2 row f">
 
                                     <div class="col-sm-1 col1">
                                       <input name="ck" type="checkbox" value="">
@@ -488,9 +863,8 @@ height:15px;
                                     <div class="col-sm-3 col7">
                                         <p>https://www.google.com</p>
                                     </div> 
-                          </div>
-
-                          <div id="row1" class="form2 row f">
+                          </div> -->
+                        <!-- <div id="row1" class="form2 row f">
 
                                   <div class="col-sm-1 col1">
                                     <input name="ck" type="checkbox" value="">
@@ -521,9 +895,8 @@ height:15px;
                                       <p>https://www.google.com</p>
                                   </div> 
                     
-                          </div>
-
-                          <div id="row1" class="form2 row f">
+                          </div> -->
+                        <!-- <div id="row1" class="form2 row f">
 
                                     <div class="col-sm-1 col1">
                                       <input name="ck" type="checkbox" value="">
@@ -554,81 +927,588 @@ height:15px;
                                         <p>https://www.google.com</p>
                                     </div> 
                       
-                          </div>
-                        </div>
-                     
+                          </div> -->
                     </div>
-
-                    <div id="audience2" class="container tab-pane fade"><br>
-                       <h3>Audience 2</h3>
-                       <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    </div>
-
-                    <div id="reg_users" class="container tab-pane fade"><br>
-                       <h3>Registered Users</h3>
-                       <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    </div>  
-
-                    <div id="checked_in_users" class="container tab-pane fade"><br>
-                       <h3>Checked-In Users</h3>
-                       <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    </div>  
-
-
-                    <div id="groups" class="container tab-pane fade white_bg"><br>
-                       <div class="container">
-                                <div class="offset-sm-9 col-sm-3 second_buttons_row">
-                                     <button type="button" class="btn btn_default inputs" id="create_group_btn">Create Group</button>
-                             
+                </div>
+                <div id="audience2" class="container tab-pane fade">
+                    <br>
+                    <h3>Audience 2</h3>
+                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+                <div id="reg_users" class="container tab-pane fade">
+                    <br>
+                    <h3>Registered Users</h3>
+                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+                <div id="checked_in_users" class="container tab-pane fade">
+                    <br>
+                    <h3>Checked-In Users</h3>
+                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+                <div id="groups" class="container tab-pane fade white_bg">
+                    <br>
+                    <div class="container">
+                        <div class="offset-sm-9 col-sm-3 second_buttons_row">
+                            <button type="button" class="btn btn_default inputs" id="create_group_btn" data-toggle="modal" data-target="#add_group_Modal">Create Group</button>
+                            <div class="modal" id="add_group_Modal">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Add New Group</h5>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <div class="row modal-body">
+                                            <div class="col-sm-9"><span style="font-weight:500;">Group Name:</span>
+                                                <input type="text" name="from" class="form_input_modal" placeholder="Media">
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="dropdown">
+                                                    <button type="button" class="btn dropdown-toggle select_modal" data-toggle="dropdown">Select from events
+                                                    </button>
+                                                    <div class="dropdown-menu">
+                                                        <a class="dropdown-item" href="#">Link 1</a>
+                                                        <a class="dropdown-item" href="#">Link 2</a>
+                                                        <a class="dropdown-item" href="#">Link 3</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="bar">
+                                                <p align="center">Add Attendees</p>
+                                            </div>
+                                            <br>
+                                            <div class="input-group search_modal">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text search-image"><img src="Assets/images/search-2.png"></div>
+                                                </div>
+                                                <input type="text" id="search_attendees" class="form-control search_attendees" placeholder="Search Attendees">
+                                            </div>
+                                            <br>
+                                            <div class="attendees_list">
+                                                <div class="row attendee_entry">
+                                                    <table class="table table_modal_attendees">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <input type="checkbox" name="groups">
+                                                                </td>
+                                                                <td>Alex Thompson</td>
+                                                                <td colspan="2">
+                                                                    <button class="btn_add_modal">Add</button>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <input type="checkbox" name="groups">
+                                                                </td>
+                                                                <td>Alex Thompson</td>
+                                                                <td>
+                                                                    <button class="btn_add_modal">Add</button>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <input type="checkbox" name="groups">
+                                                                </td>
+                                                                <td>Alex Thompson</td>
+                                                                <td>
+                                                                    <button class="btn_add_modal">Add</button>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <input type="checkbox" name="groups">
+                                                                </td>
+                                                                <td>Alex Thompson</td>
+                                                                <td>
+                                                                    <button class="btn_add_modal">Add</button>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <input type="checkbox" name="groups">
+                                                                </td>
+                                                                <td>Alex Thompson</td>
+                                                                <td>
+                                                                    <button class="btn_add_modal">Add</button>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn modal_save" data-dismiss="modal">Save</button>
+                                        </div>
+                                    </div>
                                 </div>
-                                           
-                                <table class="table table_groups">
-                                  <thead>
-                                    <tr>
-                                      <th><input onClick="toggle_group(this)" type="checkbox" name="select-all"></th>
-                                      <th>Group Name</th>
-                                      <th>No. of Users</th>
-                                      <th>More</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr>
-                                      <td><input type="checkbox" name="groups"></td>
-                                      <td>Media</td>
-                                      <td>10</td>
-                                      <td><a href="#">Edit</a></td>
-                                    </tr>
-                                     <tr>
-                                      <td><input type="checkbox" name="groups"></td>
-                                      <td>Media</td>
-                                      <td>10</td>
-                                      <td><a href="#">Edit</a></td>
-                                    </tr>
-                                    <tr>
-                                      <td><input type="checkbox" name="groups"></td>
-                                      <td>Media</td>
-                                      <td>10</td>
-                                      <td><a href="#">Edit</a></td>
-                                    </tr>
-                                    <tr>
-                                      <td><input type="checkbox" name="groups"></td>
-                                      <td>Media</td>
-                                      <td>10</td>
-                                      <td><a href="#">Edit</a></td>
-                                    </tr>
-                                    <tr>
-                                      <td><input type="checkbox" name="groups"></td>
-                                      <td>Media</td>
-                                      <td>10</td>
-                                      <td><a href="#">Edit</a></td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </div>
-                    </div>  
+                            </div>
+                        </div>
+                        <table class="table table_groups">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <input onClick="toggle_group(this)" type="checkbox" name="select-all">
+                                    </th>
+                                    <th>Group Name</th>
+                                    <th>No. of Users</th>
+                                    <th>More</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" name="groups">
+                                    </td>
+                                    <td>Media</td>
+                                    <td>10</td>
+                                    <td><a href="#">Edit</a></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" name="groups">
+                                    </td>
+                                    <td>Media</td>
+                                    <td>10</td>
+                                    <td><a href="#">Edit</a></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" name="groups">
+                                    </td>
+                                    <td>Media</td>
+                                    <td>10</td>
+                                    <td><a href="#">Edit</a></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" name="groups">
+                                    </td>
+                                    <td>Media</td>
+                                    <td>10</td>
+                                    <td><a href="#">Edit</a></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" name="groups">
+                                    </td>
+                                    <td>Media</td>
+                                    <td>10</td>
+                                    <td><a href="#">Edit</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-   
-      </div>
-   </div>
-  </body>
-</html> 
+        </div>
+    </div>
+    <!-- Draft -->
+    <div id="campaign_draft" class="tabcontent" style="display:none;">
+        <div class="col-sm-12 full_content">
+            <div class="first_content">
+                <div class="row dashboard_btn">
+                    <div class="dashboard_text">Dashboard</div>
+                </div>
+                <div class="row tab_row">
+                    <div class="col-sm-5">
+                        <div class="campaign_icon dashboard_text"><i class="fa fa-envelope" aria-hidden="true"></i>Campaigns</div>
+                    </div>
+                    <div class="col-sm-7 buttons_row_draft">
+                        <button type="button" class="btn btn_default inputs" id="discard_changes" onclick="location.href='index.html'">Discard Changes</button>
+                        <button type="button" class="btn btn_default inputs" id="save_draft">Save Draft</button>
+                    </div>
+                </div>
+            </div>
+            <div class="second_content">
+                <div class="row top_bar">
+                    <h4 style="display:inline;padding-top:1%;padding-bottom:1%;">Campaign Name</h4>
+                </div>
+            </div>
+            <div class="draft_body">
+                <div class="row top_bar_draft">
+                    <div class="top_bar_draft_2">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#use_template"><i class="far fa-file"></i>Use a template</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#import_html"><i class="fas fa-download"></i>Import HTML</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#create_html"><i class="fas fa-edit"></i>Create HTML</a>
+                            </li>
+                            <li class="nav-item preview">
+                                <a class="nav-link" data-toggle="tab" href="#preview"><i class="far fa-eye"></i>Preview</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="draft_area">
+                        <div class="email_blank_text">
+                            <p>Your Email is blank.Get started by:</p>
+                            <p>1.Using preferred template</p>
+                            <p>2.Importing HTML</p>
+                            <p>3.Adding the Components</p>
+                        </div>
+                        <!-- <div class="row">
+                            <div class="add_img_text" id="add_1">
+                                  <p align="center">Add Image or Text</p>
+                            </div>
+
+
+                           <div class="add_img_text" id="add_2">
+                                  <p align="center">Add Image or Text</p>
+                           </div> 
+                        </div>    -->
+                    </div>
+                    <div class="add_comp_btn">
+                        <button type="button" class="btn btn_default inputs" id="add_comp" data-toggle="modal" data-target="#add_comp_Modal"><i class="fas fa-plus"></i>Add Components</button>
+                        <div class="modal fade" id="add_comp_Modal" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <div class="row add_comp_body">
+                                            <div>
+                                                <button class="btn modal_btn" type="button" data-toggle="dropdown"><img src="assets/images/text-1.png">
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="#">HTML</a></li>
+                                                    <li><a href="#">CSS</a></li>
+                                                    <li><a href="#">JavaScript</a></li>
+                                                </ul>
+                                                <p>Text</p>
+                                            </div>
+                                            <div>
+                                                <button class="btn modal_btn" type="button" data-toggle="dropdown"><img src="assets/images/image.png">
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="#">HTML</a></li>
+                                                    <li><a href="#">CSS</a></li>
+                                                    <li><a href="#">JavaScript</a></li>
+                                                </ul>
+                                                <p>Image</p>
+                                            </div>
+                                            <div>
+                                                <button class="btn modal_btn" type="button" data-toggle="dropdown"><img src="assets/images/blocks.png">
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="#">Two blocks</a></li>
+                                                    <li><a href="#">Three blocks</a></li>
+                                                </ul>
+                                                <p>Blocks</p>
+                                            </div>
+                                            <div>
+                                                <button class="btn modal_btn" type="button" data-toggle="modal" data-target="#button_Modal"><img src="assets/images/button.png">
+                                                </button>
+                                                <p>Button</p>
+                                            </div>
+                                            <div>
+                                                <button class="btn modal_btn" type="button" data-toggle="modal" data-target="#social_Modal"><img src="assets/images/social-media.png">
+                                                </button>
+                                                <p>Social</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="button_Modal" class="modal fade" role="dialog" style="display:none;">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header modal_heading">
+                                        <button type="button" id="button_btn">BUTTON</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="link_to_div">
+                                            <p style="font-weight:500;">Link to</p>
+                                            <input type="text" class="link" placeholder="https://www.webmobi.com">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <p>Button Text</p>
+                                                <p class="text_padding">Text</p>
+                                                <input type="text" class="btn_text" placeholder="BUTTON">
+                                                <p class="text_padding">Font Size</p>
+                                                <input type="text" class="font_size" id="fsize" placeholder="18px">
+                                                <div class="row font_col">
+                                                    <p class="text_padding">Font Color</p>
+                                                    <div class="row fc">
+                                                        <input type="text" id="fcolor_inp1" class="font_color" placeholder="#ffffff">
+                                                        <input type="text" id="fcolor_inp2" class="font_color">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <p>Button Style</p>
+                                                <div class="row">
+                                                    <div class="col-sm-3 width_ht">
+                                                        <p class="text_padding">Width</p>
+                                                        <input id="width_input" type="text" class="width_inp" placeholder="150px">
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <p class="text_padding">Height</p>
+                                                        <input id="height_input" type="text" class="ht_inp" placeholder="150px">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-3 width_ht">
+                                                        <p class="text_padding">Margin_Top</p>
+                                                        <input id="margin_top" type="text" class="text" placeholder="150px">
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <p class="text_padding">Margin_Bottom</p>
+                                                        <input id="margin_bottom" type="text" class="text" placeholder="150px">
+                                                    </div>
+                                                    <div class="row font_col">
+                                                        <p class="text_padding" style="margin-left: 14px;">Background Color</p>
+                                                        <div class="row backg_color">
+                                                            <input type="text" class="font_color" id="bgcolor_inp1" placeholder="#ffffff">
+                                                            <input type="text" class="font_color" id="bgcolor_inp2">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="ok_btn">OK</button>
+                                        <button type="button" class="cancel_btn" data-dismiss="modal">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal" id="social_Modal">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="row top_row_social">
+                                        <span>Size:</span>
+                                        <select>
+                                            <option>Small</option>
+                                            <option>Medium</option>
+                                            <option>Large</option>
+                                        </select>
+                                        <span id="align">Align:</span>
+                                        <select>
+                                            <option>Left</option>
+                                            <option>Center</option>
+                                            <option>Right</option>
+                                        </select>
+                                    </div>
+                                    <div class="modal-header modal_heading_social">
+                                        <div class="col-sm-4">
+                                            <span><i class="fab fa-facebook" id="fb_icon"></i></span>
+                                            <span class="social_span">Facebook</span>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <span class="social_span"><i class="fab fa-twitter" id="twitter_icon"></i></span>
+                                            <span class="social_span">Twitter</span>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <span class="social_span"><i class="fab fa-linkedin" id="in_icon"></i></span>
+                                            <span class="social_span">LinkedIn</span>
+                                        </div>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <p>Social Link</p>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <p>Link</p>
+                                            </div>
+                                            <div class="col-sm-3 social_text">
+                                                <p>Text</p>
+                                            </div>
+                                            <div class="col-sm-1">
+                                            </div>
+                                            <div class="col-sm-1">
+                                            </div>
+                                        </div>
+                                        <div class="row choice">
+                                            <div class="col-sm-3">
+                                                <select class="select_box">
+                                                    <option>Facebook</option>
+                                                    <option>Twitter</option>
+                                                    <option>LinkedIn</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="social_inp_box" placeholder="https://www.facebook.com">
+                                            </div>
+                                            <div class="col-sm-3 social_text ">
+                                                <input type="text" class="social_inp_box social_text_inp" placeholder="Facebook">
+                                            </div>
+                                            <div class="col-sm-1 cancel_row cross_icon">
+                                                <span><i class="fas fa-times"></i></span>
+                                            </div>
+                                            <div class="col-sm-1 add_row">
+                                                <span><i class="fas fa-plus plus_icon"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="row choice">
+                                            <div class="col-sm-3">
+                                                <select class="select_box">
+                                                    <option>Facebook</option>
+                                                    <option>Twitter</option>
+                                                    <option>LinkedIn</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="social_inp_box" placeholder="https://www.facebook.com">
+                                            </div>
+                                            <div class="col-sm-3 social_text">
+                                                <input type="text" class="social_inp_box social_text_inp" placeholder="Facebook">
+                                            </div>
+                                            <div class="col-sm-1 cancel_row cross_icon">
+                                                <span><i class="fas fa-times"></i></span>
+                                            </div>
+                                            <div class="col-sm-1 add_row">
+                                                <span><i class="fas fa-plus plus_icon"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="row choice">
+                                            <div class="col-sm-3">
+                                                <select class="select_box">
+                                                    <option>Facebook</option>
+                                                    <option>Twitter</option>
+                                                    <option>LinkedIn</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="social_inp_box" placeholder="https://www.facebook.com">
+                                            </div>
+                                            <div class="col-sm-3 social_text">
+                                                <input type="text" class="social_inp_box social_text_inp" placeholder="Facebook">
+                                            </div>
+                                            <div class="col-sm-1 cancel_row cross_icon">
+                                                <span><i class="fas fa-times"></i></span>
+                                            </div>
+                                            <div class="col-sm-1 add_row">
+                                                <span><i class="fas fa-plus plus_icon"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="row add_more">
+                                            <a href="#">Add More</a>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="ok_btn">OK</button>
+                                        <button type="button" class="cancel_btn" data-dismiss="modal">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="next_btn_draft_div">
+                    <button type="button" class="btn btn_default " id="next_btn_draft" onclick="show_campaign_settings()">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Settings -->
+    <div id="campaign_settings" class="tabcontent" style="display:none;">
+        <div class="col-sm-12 full_content">
+            <div class="first_content">
+                <div class="row dashboard_btn">
+                    <div class="dashboard_text">Dashboard</div>
+                </div>
+                <div class="row tab_row">
+                    <div class="col-sm-5">
+                        <div class="campaign_icon dashboard_text"><i class="fa fa-envelope" aria-hidden="true"></i>Campaigns</div>
+                    </div>
+                    <div class="col-sm-7 buttons_row_campaign_set">
+                        <button type="button" class="btn btn_default discard" onclick="location.href='index.html'">Discard Changes</button>
+                        <button type="button" class="btn btn_default save_drafts">Save Drafts</button>
+                    </div>
+                </div>
+            </div>
+            <div class="second_content">
+                <div class="box_form">
+                    <h5 align="center" style="padding-top:2%;">Campaign Settings</h5>
+                    <div class="row fill_form">
+                        <div class="col-sm-6">From:
+                            <input type="text" name="from" class="form_input_half">
+                        </div>
+                        <div class="col-sm-6">Reply to:
+                            <input type="text" name="replyto" class="form_input_half">
+                        </div>
+                    </div>
+                    <div class="col-sm-12 fill_form">Subject:
+                        <input type="text" name="subject" class="form_input_full">
+                    </div>
+                    <h5 align="center" style="padding-top:3%;">Receipients</h5>
+                    <div class="col-sm-12 fill_form">Group:
+                        <input type="text" name="group" class="form_input_full">
+                    </div>
+                    <div class="col-sm-12 fill_form">Individual:
+                        <input type="text" name="individual" class="form_input_full">
+                    </div>
+                    <h5 align="center" style="padding-top:3%;">Attachments</h5>
+                    <p style="padding-left:5%;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisi quis eleifend quam adipiscing. Fringilla urna porttitor rhoncus dolor purus non enim. Felis donec et odio.
+                    </p>
+                    <button type="button" class="btn btn_default attachment">Attachments</button>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="btn btn_default next" onclick="show_campaign_schedule()
+                      ">Next</button>
+    </div>
+    <!-- Schedule -->
+    <div id="campaign_schedule" class="tabcontent" style="display:none;">
+        <div class="col-sm-12 full_content">
+            <div class="first_content">
+                <div class="row dashboard_btn">
+                    <div class="dashboard_text">Dashboard</div>
+                </div>
+                <div class="row tab_row">
+                    <div class="col-sm-5">
+                        <div class="campaign_icon dashboard_text"><i class="fa fa-envelope" aria-hidden="true"></i>Campaigns</div>
+                    </div>
+                    <div class="col-sm-7 buttons_row_campaign_set">
+                        <button type="button" class="btn btn_default discard" onclick="location.href='index.html'">Discard Changes</button>
+                        <button type="button" class="btn btn_default save_drafts">Save Drafts</button>
+                    </div>
+                </div>
+            </div>
+            <div class="second_content">
+                <div class="box_form">
+                    <h5 align="center" style="padding-top:2%;">Campaign Settings</h5>
+                    <div class="col-sm-12 fill_form">Send a Test Email:
+                        <input type="text" name="test_email" class="form_input_full">
+                    </div>
+                    <h5 align="center" style="padding-top:2%;">Send or Schedule this Campaign</h5>
+                    <form action="#" class="buttons_radio">
+                        <!--  <label class="radio-inline modal_radio">
+                                                            <input type="radio" name="optradio">
+                                                            <span class="checkmark"></span>
+                                                            <span>Send now</span>
+                                                        </label>
+
+                                                        <label class="radio-inline modal_radio">
+                                                            <input type="radio" name="optradio">
+                                                            <span class="checkmark"></span>
+                                                            <span>Send on Schedule</span>
+                                                        </label> -->
+                        <label class="radio_btn">
+                            <input type="radio" name="schedule">Send now
+                        </label>
+                        <label>
+                            <input type="radio" name="schedule">Send on Schedule
+                        </label>
+                        <!-- <input type="text" placeholder="">  -->
+                        <fieldset>
+                            <div>
+                                <input id="party" type="datetime-local" name="partydate" value="2018-07-17T08:30">
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="btn btn_default send">Send</button>
+    </div>
+</body>
+</body>
+
+</html>

@@ -1,5 +1,16 @@
 function opentab(evt, cityName) {
     
+    if(cityName=="campaigns")
+    {
+        // $('#defaultOpen').css("border-bottom", "red");
+        $('#defaultOpen').addClass('border_bottom');
+        // alert("campaigns");
+    }
+    if(cityName=="audience")
+    {
+        
+        // alert("audience");
+    }
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
@@ -15,10 +26,10 @@ function opentab(evt, cityName) {
 }
 
 
-function toggle(source) {
-  checkboxes = document.getElementsByName('ck');
-  for(var i=0, n=checkboxes.length;i<n;i++) {
-    checkboxes[i].checked = source.checked;
+function toggle(source_aud) {
+  checkboxes_toggle = document.getElementsByName('audience_ckbox');
+  for(var i=0, n=checkboxes_toggle.length;i<n;i++) {
+    checkboxes_toggle[i].checked = source_aud.checked;
   }
 }
 function toggle_group(source) {
@@ -34,11 +45,20 @@ function toggle_group(source) {
     
 $(document).ready(function()
 {
-  $('#aaa').click(function(){
-  $("#add_comp_Modal").hide();
-  $(".modal-backdrop").hide();
-  $('#myModal').modal('show');
-   });
+
+  $('#groups_tab').click(function(){
+    $('#add_btn').hide();
+    $('#delete_btn').text('Delete Group');
+  });
+  
+  
+  if(($('#active_campaigns').hasClass("active"))==true)
+  {
+
+      $('#active_campaigns').css("border-bottom", "3px solid #FF9900 !important");
+      // $('#active_campaigns').css("background-color", "yellow");
+  }
+      // alert();
 
   //   if(($("#groups").hasClass("active"))==true)
   //          $("#add_btn").hide();
@@ -47,7 +67,12 @@ $(document).ready(function()
   // alert(target);
 });
 // });
-    
+function open_draft()
+{
+    $('#campaigns').hide();
+    $('#campaign_draft').show();
+
+}    
 
 function button_modal()
 {
@@ -58,6 +83,17 @@ function button_modal()
     $('#myModal').modal('show');
     // window.location.reload();
 }
+function show_campaign_settings()
+{
+    $('#campaign_draft').hide();
+    $('#campaign_settings').show();
+}
+function show_campaign_schedule()
+{
+    $('#campaign_settings').hide();
+    $('#campaign_schedule').show();
+}
+
 
 // Get the element with id="defaultOpen" and click on it
 // document.getElementById("defaultOpen").click();
