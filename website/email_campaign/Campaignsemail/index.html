@@ -1,0 +1,135 @@
+<html>
+<head>
+  <title>EMAIL | webMOBI</title>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.simplePagination.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Gothic+A1|Open+Sans" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="Assets/css/style.css">
+  <script type="text/javascript" src="assets/js/main.js"></script>
+</head>
+  <body>
+  
+      <div class="tab_div">
+        <div class="tab">
+          <div class="logo_div">
+            <a href="#"><img src="assets/images/WebMobi.png"></a>
+          </div>
+          <button class="tablinks" onclick="opentab(event, 'campaigns')" id="defaultOpen"><img src="assets/images/campaigns.png"></button>
+          <button class="tablinks" onclick="opentab(event, 'audience')"><img src ="assets/images/audience.png"></button>
+        </div>
+      </div>
+      <div id="campaigns" class="tabcontent">
+          <div class="col-sm-12 full_content">
+            <div class="first_content">
+                <div class="row dashboard_btn">
+                  <div>Dashboard</div>
+                </div>
+                <div class="row tab_row">
+                  <div class="col-sm-5">
+                    <div class="campaign_icon"><i class="fa fa-envelope" aria-hidden="true"></i>Campaigns</div>
+                  </div>
+                  <div class="col-sm-7 ">
+                    <span  id="active_campaigns" class="active_campaigns">8 Active campaigns</span>
+                    <span class="drafts">3 Drafts</span>
+                    <button type="button" class="btn btn_default create_btn">Create Campaigns</button>
+                  </div>
+               </div>
+             </div>
+             <div class="second_content">
+              <div class="table-responsive">
+                  <table class="table table-bordered table_start">
+                    <thead>
+                      <tr>
+                        <th></th>
+                        <th>Campaign Name</th>
+                        <th>Date</th>
+                        <th>Report</th> 
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>Campaign Name 1</td>
+                        <td>22 May 2018 11:59:00 AM </td>  
+                        <td>Sending</td>
+                        <td>
+
+                          <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a href="#">HTML</a></li>
+      <li><a href="#">CSS</a></li>
+      <li><a href="#">JavaScript</a></li>
+    </ul>
+  </div>
+                          <!-- <div class="dropdown">
+                              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                              <span class="caret"></span></button>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">HTML</a></li>
+                                <li><a href="#">CSS</a></li>
+                                <li><a href="#">JavaScript</a></li>
+                              </ul>
+                          </div> -->
+                        
+                            <!-- <button type="button" class="btn more" data-toggle="dropdown">
+                                 <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">item1</a>
+                                <a class="dropdown-item" href="#">item2</a> 
+                                <a class="dropdown-item" href="#">item3</a> 
+                                <a class="dropdown-item" href="#">item4</a>
+                            </div> -->
+                        
+                        </td>  
+                      </tr>  
+                      <tr>
+                        <td>2</td>
+                        <td>Campaign Name 2</td>
+                        <td>22 May 2018 11:59:00 AM </td>  
+                        <td>Sending</td>
+                      </tr>          
+                      <tr>
+                        <td>3</td>
+                        <td>Campaign Name 3</td>
+                        <td>22 May 2018 11:59:00 AM </td>  
+                        <td>Sending</td>
+                      </tr>  
+                      <tr>
+                        <td>4</td>
+                        <td>Campaign Name 4</td>
+                        <td>22 May 2018 11:59:00 AM </td>  
+                        <td>Sending</td>
+                      </tr>  
+                      <tr>
+                        <td>5</td>
+                        <td>Campaign Name 5</td>
+                        <td>22 May 2018 11:59:00 AM </td>  
+                        <td>Sending</td>
+                      </tr>  
+                      <tr>
+                        <td>6</td>
+                        <td>Campaign Name 6</td>
+                        <td>22 May 2018 11:59:00 AM </td>  
+                        <td>Sending</td>
+                      </tr>  
+                    </tbody>
+                  </table>
+              </div> 
+            </div>
+        </div>
+      </div>
+      <div id="audience" class="tabcontent" style="display: none;">
+        <h3>Paris</h3>
+        <p>Paris is the capital of France.</p> 
+      </div>
+   
+  </body>
+</html> 
