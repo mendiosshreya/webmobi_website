@@ -1,14 +1,12 @@
 function opentab(evt, cityName) {
-    
-    if(cityName=="campaigns")
-    {
+
+    if (cityName == "campaigns") {
         // $('#defaultOpen').css("border-bottom", "red");
         $('#defaultOpen').addClass('border_bottom');
         // alert("campaigns");
     }
-    if(cityName=="audience")
-    {
-        
+    if (cityName == "audience") {
+
         // alert("audience");
     }
     var i, tabcontent, tablinks;
@@ -19,7 +17,7 @@ function opentab(evt, cityName) {
     tablinks = document.getElementsByClassName("tablinks");
     for (i = 0; i < tablinks.length; i++) {
         tablinks[i].className = tablinks[i].className.replace(" active", "");
-        
+
     }
     document.getElementById(cityName).style.display = "block";
     evt.currentTarget.className += " active";
@@ -27,55 +25,52 @@ function opentab(evt, cityName) {
 
 
 function toggle(source_aud) {
-  checkboxes_toggle = document.getElementsByName('audience_ckbox');
-  for(var i=0, n=checkboxes_toggle.length;i<n;i++) {
-    checkboxes_toggle[i].checked = source_aud.checked;
-  }
+    checkboxes_toggle = document.getElementsByName('audience_ckbox');
+    for (var i = 0, n = checkboxes_toggle.length; i < n; i++) {
+        checkboxes_toggle[i].checked = source_aud.checked;
+    }
 }
+
 function toggle_group(source) {
-  checkboxes = document.getElementsByName('groups');
-  for(var i=0, n=checkboxes.length;i<n;i++) {
-    checkboxes[i].checked = source.checked;
-  }
+    checkboxes = document.getElementsByName('groups');
+    for (var i = 0, n = checkboxes.length; i < n; i++) {
+        checkboxes[i].checked = source.checked;
+    }
 }
 // $("#groups").hasClass("active")(function(){
 //         // alert();
 //            $("#add_btn").hide();
 //     });
-    
-$(document).ready(function()
-{
 
-  $('#groups_tab').click(function(){
-    $('#add_btn').hide();
-    $('#delete_btn').text('Delete Group');
-  });
-  
-  
-  if(($('#active_campaigns').hasClass("active"))==true)
-  {
+$(document).ready(function() {
 
-      $('#active_campaigns').css("border-bottom", "3px solid #FF9900 !important");
-      // $('#active_campaigns').css("background-color", "yellow");
-  }
-      // alert();
+    $('#groups_tab').click(function() {
+        $('#add_btn').hide();
+        $('#delete_btn').text('Delete Group');
+    });
 
-  //   if(($("#groups").hasClass("active"))==true)
-  //          $("#add_btn").hide();
-  //   $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-  // var target = $(e.target).attr("href") // activated tab
-  // alert(target);
+
+    if (($('#active_campaigns').hasClass("active")) == true) {
+
+        $('#active_campaigns').css("border-bottom", "3px solid #FF9900 !important");
+        // $('#active_campaigns').css("background-color", "yellow");
+    }
+    // alert();
+
+    //   if(($("#groups").hasClass("active"))==true)
+    //          $("#add_btn").hide();
+    //   $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    // var target = $(e.target).attr("href") // activated tab
+    // alert(target);
 });
 // });
-function open_draft()
-{
+function open_draft() {
     $('#campaigns').hide();
     $('#campaign_draft').show();
 
-}    
+}
 
-function button_modal()
-{
+function button_modal() {
     // alert();
     $("#add_comp_Modal").hide();
     $(".modal-backdrop").hide();
@@ -83,13 +78,13 @@ function button_modal()
     $('#myModal').modal('show');
     // window.location.reload();
 }
-function show_campaign_settings()
-{
+
+function show_campaign_settings() {
     $('#campaign_draft').hide();
     $('#campaign_settings').show();
 }
-function show_campaign_schedule()
-{
+
+function show_campaign_schedule() {
     $('#campaign_settings').hide();
     $('#campaign_schedule').show();
 }
