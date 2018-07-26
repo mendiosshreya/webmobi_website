@@ -1048,6 +1048,8 @@ textarea {
 }
 
 
+
+
 /*Shreya 02-07-2018*/
 
 .popular-events-cell1 {
@@ -1238,8 +1240,9 @@ textarea {
 }
 
 .view {
-    background-color: #2E2E9F;
-    color: #fff;
+    cursor:pointer;
+    background-color: transparent;
+    color: #2E2E9F;
     border: none;
 }
 
@@ -1259,16 +1262,6 @@ textarea {
     margin-left: 82%;
 }
 
-
-/*#next_all
-{
-  margin-left: 82%;
-} 
-#next_conf
-{
-  margin-left: 82%;
-} */
-
 #map {
     margin-top: 3%;
     margin-bottom: 5%;
@@ -1280,7 +1273,7 @@ textarea {
 }
 
 #next_conf {
-    margin-left: 78%;
+    margin-left: 77%;
     margin-bottom: 3%;
 }
 
@@ -1295,12 +1288,12 @@ textarea {
 }
 
 #filter_btn {
-    margin-top: 5%;
-    margin-left: 3%;
+    margin-top: 10%;
+    margin-left: 20%;
     width: 100px;
     background-color: #FC4C72;
     color: #fff;
-    border-radius: 20px;
+    border-radius:3px;
     border: none;
 }
 

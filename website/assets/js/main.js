@@ -18,7 +18,7 @@ $(document).ready(function() {
     });
 
     $('#down').click(function() {
-        // $('#display_advance').toggle('1000');
+
         $("i", this).toggleClass("fas fa-caret-down fas fa-caret-up");
         $("#all_country").toggle();
     });
@@ -52,7 +52,7 @@ $(document).ready(function() {
     if (window.location.href.indexOf("event-details.html") >= 0) {
         // userid='';
         var event_appid = window.location.href.split('#').pop();
-        console.log(event_appid);
+        // console.log(event_appid);
         $.ajax({
             type: 'POST',
             data: { "userid": "32dfa84844d9de66e4c77fc71cbdb5bd", "appid": event_appid },
@@ -70,7 +70,7 @@ $(document).ready(function() {
                 $('.modal-dialog').append('<div class="modal-content"><div class="modal-header text-center"><h4 class="modal-title">' + event_details.events[0].app_name + '</h4> <button type="button" class="close" data-dismiss="modal">&times;</button></div><div class="modal-body"><div class="form-group event-det-modal"> <i class="fas fa-user"></i> <input type="text" class="form-control event-det-username" id="usrname" placeholder="Full Name"></div><div class="form-group event-det-modal"> <i class="fas fa-map-marker-alt"></i> <input type="text" class="form-control event-det-username" id="loc" placeholder="Your City ( Start typing to see option )"></div><div class="form-group event-det-modal"> <i class="fas fa-building"></i> <input type="text" class="form-control event-det-username" id="company" placeholder="Company"></div> <span class="individual"> <label class="form-check-label" style="margin-top: -10%;"> <input type="checkbox" class="form-check-input" value=""> Individual </label> </span><div class="form-group event-det-modal"> <i class="fas fa-briefcase"></i> <input type="text" class="form-control event-det-username" id="designation" placeholder="Designation"></div><div class="form-group event-det-modal"> <i class="fas fa-mobile-alt"></i> <input type="text" class="form-control event-det-username" id="mobno" placeholder="Mobile number"></div><div class="submit-btn"> <button type="submit" class="btn submit1" data-dismiss="modal">SUBMIT</button></div></div></div>');
 
                 var line1 = event_details.events[0].location;
-                console.log(line1);
+                // console.log(line1);
                 $("#map").css({ "width": "100%", "height": "400px" })
                 var address = line1;
 
@@ -135,7 +135,7 @@ $(document).ready(function() {
                             var entry_fee_text_search = "Free";
                         else
                             var entry_fee_text_search = "Paid";
-                        // var sd=new Date(search_result.events[i].start_date);
+
                         var sd = Date.parse(search_result.events[i].start_date);
                         var date_inmilliseconds = sd * 1;
 
@@ -275,11 +275,6 @@ $(document).ready(function() {
                 var entry_fee1_text = "Free";
             else
                 var entry_fee1_text = "Paid";
-            // if(entry_fee1==)
-            // trade1_sd=stringify(trade1_sd).split(0,21);
-            // const parts1 = trade1_sd.split(/[- :]/);
-            // const formatted1 = `${parts1[2]}/${parts1[1]}/${parts1[0]} ${parts1[3]}:${parts1[4]}`;
-            // var trade2_sd=new Date(tradeshows.events[1].start_date);
             var trade2_sd = Date.parse(tradeshows.events[1].start_date);
             var date_inmilliseconds_sd2 = trade2_sd * 1;
 
@@ -348,12 +343,15 @@ $(document).ready(function() {
 
     $.ajax({
         type: 'GET',
-        url: 'http://139.59.56.245:3080/freq_country?pretty',
+        // url: 'http://139.59.56.245:3080/freq_country?pretty',
+        url: 'http://104.131.76.15:3000/api/event/discovery_filter_list',
         success: function(fcountry) {
-            for (var i = 0; i < fcountry.data.length; i++) {
-                $('#all_country').append('<div><input type="checkbox" name="country" value="' + fcountry.data[i].Country + '">' + fcountry.data[i].Country + '</div>');
-            }
-
+            $('#all_country').append('<div><input type="checkbox" name="country" value="' + fcountry.country[0].Country + '">' + fcountry.country[0].Country + '</div>');
+            $('#all_country').append('<div><input type="checkbox" name="country" value="' + fcountry.country[0].Country + '">' + fcountry.country[1].Country + '</div>');
+            $('#all_country').append('<div><input type="checkbox" name="country" value="' + fcountry.country[0].Country + '">' + fcountry.country[3].Country + '</div>');
+            $('#all_country').append('<div><input type="checkbox" name="country" value="' + fcountry.country[0].Country + '">' + fcountry.country[4].Country + '</div>');
+            $('#all_country').append('<div><input type="checkbox" name="country" value="' + fcountry.country[0].Country + '">' + fcountry.country[5].Country + '</div>');
+            $('#all_country').append('<div><input type="checkbox" name="country" value="' + fcountry.country[0].Country + '">' + fcountry.country[6].Country + '</div>');
             $('#all_country').append('<button type="button" class="view" data-toggle="modal" data-target="#myModal" >View All</button><div id="myModal" class="modal fade" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">All Countries</h4><button type="button" class="close" data-dismiss="modal">&times;</button></div><div class="modal-body"><div id="filter_all_countries" class="row count-list"></div></div><div class="modal-footer"> <button type="button" class="btn btn-default" data-dismiss="modal" onclick="add_to_filter()">Done</button></div></div></div></div></a>');
         },
         error: function(errdatagc) {
@@ -366,15 +364,16 @@ $(document).ready(function() {
 
     $.ajax({
         type: 'GET',
-        url: 'http://139.59.56.245:3080/freq_city?pretty',
+        url: 'http://104.131.76.15:3000/api/event/discovery_filter_list',
         success: function(fcity) {
 
-            for (var i = 0; i < fcity.data.length; i++) {
-                $('#all_location').append('<div><input type="checkbox" name="location" value="' + fcity.data[i].City + '">' + fcity.data[i].City + '</div>');
+
+
+            for (var i = 1; i < 7; i++) {
+                $('#all_location').append('<div><input type="checkbox" name="location" value="' + fcity.city[i].city + '">' + fcity.city[i].city + '</div>');
 
             }
 
-            // $('#all_location').append('<button type="button" class="view" data-toggle="modal" data-target="#myModal2">View All</button><div id="myModal2" class="modal fade" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">All Locations</h4><button type="button" class="close" data-dismiss="modal">&times;</button></div><div class="modal-body"><div id="filter_all_locations" class="row count-list"></div></div><div class="modal-footer"> <button type="button" class="btn btn-default" data-dismiss="modal" onclick="filter()">Filter</button></div></div></div></div></a>');
             $('#all_location').append('<button type="button" class="view" data-toggle="modal" data-target="#myModal2">View All</button><div id="myModal2" class="modal fade" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">All Locations</h4><button type="button" class="btn btn-default filter_top" data-dismiss="modal" onclick="add_to_filter()">Done</button> <button type="button" class="close" data-dismiss="modal">&times;</button></div><div class="modal-body"><input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name"><ul id="myUL"></ul></div><div class="modal-footer"> <button type="button" class="btn btn-default" data-dismiss="modal" onclick="add_to_filter()">Done</button></div></div></div></div>');
 
         },
@@ -386,6 +385,7 @@ $(document).ready(function() {
 
     $.ajax({
         type: 'GET',
+
         url: 'http://139.59.56.245:3080/freq_category?pretty',
         success: function(fcategory) {
             for (var i = 0; i < fcategory.data.length; i++) {
@@ -401,14 +401,14 @@ $(document).ready(function() {
 
     $.ajax({
         type: 'GET',
-        url: 'http://139.59.56.245:3080/all_country?pretty',
+        url: 'http://104.131.76.15:3000/api/event/discovery_filter_list',
         success: function(all_country) {
 
 
-            for (var i = 0; i < all_country.data.length; i++) {
 
+            for (var i = 0; i < all_country.country.length; i++) {
 
-                $('#filter_all_countries').append('<div class="col-sm-4"><input type="checkbox" name="country" value="' + all_country.data[i].Country + '">' + all_country.data[i].Country + '</div>');
+                $('#filter_all_countries').append('<div class="col-sm-4"><input type="checkbox" name="country" value="' + all_country.country[i].Country + '">' + all_country.country[i].Country + '</div>');
 
             }
 
@@ -422,11 +422,12 @@ $(document).ready(function() {
 
     $.ajax({
         type: 'GET',
-        url: 'http://139.59.56.245:3080/all_city?pretty',
+        url: 'http://104.131.76.15:3000/api/event/discovery_filter_list',
         success: function(all_city) {
 
-            for (var i = 0; i < all_city.data.length; i++) {
-                $("#myUL").append('<li><a href="#"><input type="checkbox" name="location" value="' + all_city.data[i].City + '">' + all_city.data[i].City + '</a></li>');
+
+            for (var i = 0; i < all_city.city.length; i++) {
+                $("#myUL").append('<li><a href="#"><input type="checkbox" name="location" value="' + all_city.city[i].city + '">' + all_city.city[i].city + '</a></li>');
 
             }
 
@@ -508,9 +509,6 @@ function Redirect() {
     window.location = "trade-shows.html";
 }
 
-function dummy() {
-    alert();
-}
 
 function search_events() {
     // alert();
@@ -570,22 +568,21 @@ function handleTopNavAnimation() {
 function display_tradeshows(e) {
 
     var action = e.id;
-    // console.log("HI");  
     console.log(action);
 
     if ((action == "trade_main") || (action == undefined))
         pg_no_trade = 1;
     else {
-        if (action == "next")
-
+        if (action == "next") {
+            // if(next_page==true)
             ++pg_no_trade;
-
-        else {
+        } else {
             if (pg_no_trade != 1)
                 pg_no_trade--;
         }
     }
-    // console.log(pg_no);
+
+    console.log(pg_no_trade);
 
     $.ajax({
         type: 'GET',
@@ -595,7 +592,8 @@ function display_tradeshows(e) {
         success: function(datago_trade) {
 
             console.log(datago_trade);
-            console.log(datago_trade.events.length);
+            // if (datago_trade.next_page == true) {
+            // console.log(datago_trade.events.length);
             $("#trade_display").empty();
             for (var i = 0; i < datago_trade.events.length; i++) {
                 var loc = datago_trade.events[i].location;
@@ -612,7 +610,19 @@ function display_tradeshows(e) {
                 $("#trade_display").append('<div class="col-sm-4"><div class="popular-events-cell1"> <a href="event-details.html#' + datago_trade.events[i].appid + '"><div class="pop-bg-img2"> <img src=' + datago_trade.events[i].app_image + '></div><div class="pop-event-cont1"><h5>' + datago_trade.events[i].app_name + '</h5></div><div class="row pop-event-cont2"><div class="col-sm-8 pop-event-loc-time"><h6><i class="fas fa-map-marker-alt"></i>' + loc + '</h6><h6><i class="far fa-calendar-alt"></i>' + date_day(date_inmilliseconds) + " " + milli_hour(date_inmilliseconds) + '</h6></div><div class="col-sm-4 pop-event-price"><h5>' + entry_fee_text_trade + '</h5></div></div><div class="pop-event-cont3"><h6>#' + datago_trade.events[i].app_category + ", " + '#' + datago_trade.events[i].app_sub_category + '</h6></div> </a></div></div></div>');
 
             }
-            $("#trade_display").append('<div class="row container-fluid prev_next "><button id="prev" type="button" class="prev_next_buttons" onclick="display_tradeshows(this)">Previous<i class="fas fa-arrow-left"></i></button><button id="next" type="button" class="prev_next_buttons" onclick="display_tradeshows(this)">Next<i class="fas fa-arrow-right"></i></button></div>');
+            $("#trade_display").append('<div class="row container-fluid prev_next "><button id="prev" type="button" class="prev_next_buttons" onclick="display_tradeshows(this)"><i class="fas fa-arrow-left"></i>Previous</button><button id="next" type="button" class="prev_next_buttons" onclick="display_tradeshows(this)">Next<i class="fas fa-arrow-right"></i></button></div>');
+            if (pg_no_trade ==1) {
+
+                $('#prev').hide();
+            }  
+          
+
+
+            if (datago_trade.next_page == false) {
+
+                $('#next').hide();
+            }
+
         },
         error: function(errdatagc) {
             console.log(errdatagc);
@@ -637,16 +647,18 @@ function display_conferences(e) {
                 pg_no_conf--;
         }
     }
-    // console.log(pg_no_conf);
+    console.log(pg_no_conf);
     $.ajax({
         type: 'GET',
         url: 'http://104.131.76.15:3000/api/event/discovery_web_events?type=conference&page_number=' + pg_no_conf + '',
 
 
         success: function(datago_conf) {
-
             console.log(datago_conf);
-            console.log(datago_conf.events.length);
+
+
+            // console.log(datago_conf);
+            // console.log(datago_conf.events.length);
             $("#conf_display").empty();
             for (var i = 0; i < datago_conf.events.length; i++) {
                 var loc = datago_conf.events[i].location;
@@ -666,7 +678,16 @@ function display_conferences(e) {
 
 
             }
-            $("#conf_display").append('<div class="row container-fluid prev_next "><button id="prev_conf" type="button" class="prev_next_buttons" onclick="display_conferences(this)">Previous<i class="fas fa-arrow-left"></i></button><button id="next_conf" type="button" class="prev_next_buttons" onclick="display_conferences(this)">Next<i class="fas fa-arrow-right"></i></button></div>');
+            $("#conf_display").append('<div class="row container-fluid prev_next "><button id="prev_conf" type="button" class="prev_next_buttons" onclick="display_conferences(this)"><i class="fas fa-arrow-left"></i>Previous</button><button id="next_conf" type="button" class="prev_next_buttons" onclick="display_conferences(this)">Next<i class="fas fa-arrow-right"></i></button></div>');
+             if (pg_no_conf ==1) {
+
+                $('#prev_conf').hide();
+            }  
+            if (conf_display.next_page == false) {
+
+                $('#next_conf').hide();
+            }
+
         },
         error: function(errdatagc) {
             console.log(errdatagc);
@@ -694,14 +715,13 @@ function trade_conferences(e) {
                 pg_no_all--;
         }
     }
-    // console.log(pg_no_all);
+    console.log(pg_no_all);
 
     $.ajax({
         type: 'GET',
         url: 'http://104.131.76.15:3000/api/event/discovery_web_events?type=all&page_number=' + pg_no_all + '',
 
         success: function(datagoall) {
-
             console.log(datagoall);
             $("#all_display").empty();
             // $("#trade_display").empty();
@@ -724,10 +744,16 @@ function trade_conferences(e) {
                 $("#all_display").append('<div class="col-sm-4"><div class="popular-events-cell1"> <a href="event-details.html#' + datagoall.events[i].appid + '"><div class="pop-bg-img2"> <img src=' + datagoall.events[i].app_image + '></div><div class="pop-event-cont1"><h5>' + datagoall.events[i].app_name + '</h5></div><div class="row pop-event-cont2"><div class="col-sm-8 pop-event-loc-time"><h6><i class="fas fa-map-marker-alt"></i>' + loc + '</h6><h6><i class="far fa-calendar-alt"></i>' + date_day(date_inmilliseconds) + " " + milli_hour(date_inmilliseconds) + '</h6></div><div class="col-sm-4 pop-event-price"><h5>' + entry_fee_text_all + '</h5></div></div><div class="pop-event-cont3"><h6>#' + datagoall.events[i].app_category + ", " + '#' + datagoall.events[i].app_sub_category + '</h6></div> </a></div></div></div>');
 
             }
-            $("#all_display").append('<div class="row container-fluid prev_next "><button id="prev_all" type="button" class="prev_next_buttons" onclick="trade_conferences(this)">Previous<i class="fas fa-arrow-left"></i></button> <button id="next_all" type="button" class="prev_next_buttons" onclick="trade_conferences(this)">Next<i class="fas fa-arrow-right"></i></button></div>');
+            $("#all_display").append('<div class="row container-fluid prev_next "><button id="prev_all" type="button" class="prev_next_buttons" onclick="trade_conferences(this)"><i class="fas fa-arrow-left"></i>Previous</button> <button id="next_all" type="button" class="prev_next_buttons" onclick="trade_conferences(this)">Next<i class="fas fa-arrow-right"></i></button></div>');
+           if (pg_no_all ==1) {
 
+                $('#prev_all').hide();
+            }  
+            if (datagoall.next_page == false) {
 
-            // }
+                $('#next_all').hide();
+            }
+
         },
         error: function(errdatagc) {
             console.log(errdatagc);
@@ -850,18 +876,7 @@ function add_to_filter() {
 function filter() {
 
     var selected_country = $("input:checkbox[name=country]:checked");
-    if (selected_country.length == 0) {
-        country_array.push("anycountry");
-    }
-
-
-
     var selected_location = $("input:checkbox[name=location]:checked");
-    if (selected_location.length == 0) {
-        location_array.push("anylocation");
-    }
-
-
     var selected_startdate = $('#filter_startdate').val();
     if (selected_startdate == '') {
         selected_startdate = "anydate";
@@ -889,8 +904,20 @@ function filter() {
         location_array.push(sel_value_location);
     }
 
-    var country = JSON.stringify(country_array);
-    var locat = JSON.stringify(location_array);
+    var country = "";
+    if (country_array.length == 0) {
+        country = 'anycountry';
+    } else {
+        country = JSON.stringify(country_array);
+    }
+
+    var locat = "";
+    if (location_array.length == 0) {
+        locat = 'anylocation';
+    } else {
+        locat = JSON.stringify(location_array);
+    }
+    // 
     // console.log(country_array);
     // console.log(location_array);
 
@@ -899,7 +926,7 @@ function filter() {
 
         type: 'POST',
         url: 'http://104.131.76.15:3000/api/event/filter_event',
-        data: { "country": country, "location": locat, "date": "anydate", "category": "anycategory" },
+        data: { "country": country, "location": locat, "start_date": selected_startdate, "end_date": selected_enddate, "category": "anycategory" },
         success: function(filter) {
             // console.log(filter.events.length);
             console.log(filter);
@@ -915,7 +942,7 @@ function filter() {
                     else
                         var entry_fee_text_filter = "Paid";
                     // var sd=new Date(filter.events[i].start_date);
-                    var sd = Date.parse(search_result.events[i].start_date);
+                    var sd = Date.parse(filter.events[i].start_date);
                     var date_inmilliseconds = sd * 1;
                     $("#all_display").append('<div class="col-sm-4"><div class="popular-events-cell1"> <a href="event-details.html#' + filter.events[i].appid + '"><div class="pop-bg-img2"> <img src=' + filter.events[i].app_image + '></div><div class="pop-event-cont1"><h5>' + filter.events[i].app_name + '</h5></div><div class="row pop-event-cont2"><div class="col-sm-8 pop-event-loc-time"><h6><i class="fas fa-map-marker-alt"></i>' + loc + '</h6><h6><i class="far fa-calendar-alt"></i>' + date_day(date_inmilliseconds) + " " + milli_hour(date_inmilliseconds) + '</h6></div><div class="col-sm-4 pop-event-price"><h5>' + entry_fee_text_filter + '</h5></div></div><div class="pop-event-cont3"><h6>#' + filter.events[i].app_category + ", " + '#' + filter.events[i].app_sub_category + '</h6></div> </a></div></div></div>');
 
@@ -928,6 +955,8 @@ function filter() {
             console.log(errdatagc);
         }
     });
+    console.log(country_array);
+    // console.log(location_array);
     //To empty the arrays
     country_array = [];
     location_array = [];
