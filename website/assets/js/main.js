@@ -582,7 +582,7 @@ function display_tradeshows(e) {
         }
     }
 
-    console.log(pg_no_trade);
+    // console.log(pg_no_trade);
 
     $.ajax({
         type: 'GET',
@@ -611,11 +611,11 @@ function display_tradeshows(e) {
 
             }
             $("#trade_display").append('<div class="row container-fluid prev_next "><button id="prev" type="button" class="prev_next_buttons" onclick="display_tradeshows(this)"><i class="fas fa-arrow-left"></i>Previous</button><button id="next" type="button" class="prev_next_buttons" onclick="display_tradeshows(this)">Next<i class="fas fa-arrow-right"></i></button></div>');
-            if (pg_no_trade ==1) {
+            if (pg_no_trade == 1) {
 
                 $('#prev').hide();
-            }  
-          
+            }
+
 
 
             if (datago_trade.next_page == false) {
@@ -647,7 +647,7 @@ function display_conferences(e) {
                 pg_no_conf--;
         }
     }
-    console.log(pg_no_conf);
+    // console.log(pg_no_conf);
     $.ajax({
         type: 'GET',
         url: 'http://104.131.76.15:3000/api/event/discovery_web_events?type=conference&page_number=' + pg_no_conf + '',
@@ -679,10 +679,10 @@ function display_conferences(e) {
 
             }
             $("#conf_display").append('<div class="row container-fluid prev_next "><button id="prev_conf" type="button" class="prev_next_buttons" onclick="display_conferences(this)"><i class="fas fa-arrow-left"></i>Previous</button><button id="next_conf" type="button" class="prev_next_buttons" onclick="display_conferences(this)">Next<i class="fas fa-arrow-right"></i></button></div>');
-             if (pg_no_conf ==1) {
+            if (pg_no_conf == 1) {
 
                 $('#prev_conf').hide();
-            }  
+            }
             if (conf_display.next_page == false) {
 
                 $('#next_conf').hide();
@@ -715,7 +715,7 @@ function trade_conferences(e) {
                 pg_no_all--;
         }
     }
-    console.log(pg_no_all);
+    // console.log(pg_no_all);
 
     $.ajax({
         type: 'GET',
@@ -745,10 +745,10 @@ function trade_conferences(e) {
 
             }
             $("#all_display").append('<div class="row container-fluid prev_next "><button id="prev_all" type="button" class="prev_next_buttons" onclick="trade_conferences(this)"><i class="fas fa-arrow-left"></i>Previous</button> <button id="next_all" type="button" class="prev_next_buttons" onclick="trade_conferences(this)">Next<i class="fas fa-arrow-right"></i></button></div>');
-           if (pg_no_all ==1) {
+            if (pg_no_all == 1) {
 
                 $('#prev_all').hide();
-            }  
+            }
             if (datagoall.next_page == false) {
 
                 $('#next_all').hide();
