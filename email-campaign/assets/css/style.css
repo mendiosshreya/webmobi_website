@@ -23,6 +23,7 @@
 
 
 
+
 /* Style the buttons inside the tab */
 
 .tab button {
@@ -49,6 +50,7 @@
     text-align: center;
     margin-top: 6%;
 }
+
 
 
 
@@ -125,10 +127,26 @@ button#defaultOpen {
 .second_content {
     background-color: #fff;
     margin-top: 3%;
+    /*width:100%;*/
     /* margin:1%; */
 }
 
 .second_content_table {
+    background-color: #fff;
+}
+
+#active_camp {
+    margin-left: 0 !important;
+    padding-left: 0px !important;
+}
+
+#draft {
+    margin-left: 0 !important;
+    padding-left: 0px !important;
+}
+
+.starting_content {
+    width: 105%;
     background-color: #fff;
 }
 
@@ -245,107 +263,6 @@ button#defaultOpen {
     outline: none;
 }
 
-.form1 {
-    font-weight: 600;
-    position: relative;
-    margin-left: 0px;
-    margin-right: 0px;
-    padding-left: 0px;
-    padding-right: 0px;
-    padding-top: 6%;
-    border-bottom: 1px solid #ccc;
-}
-
-.f {
-    padding-top: 1%;
-    /*border-bottom: 1px solid #ccc;*/
-}
-
-.fheading {
-    padding-top: 1%;
-    border-bottom: 1px solid #ccc;
-}
-
-.col1 {
-    margin-top: 4px;
-    max-width: 3%;
-}
-
-.col2 p {
-    white-space: nowrap;
-    width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.col3 {
-    width: 100%;
-}
-
-.col3 p {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.col4 p {
-    white-space: nowrap;
-    width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.col5 {
-    padding-left: 2%;
-    max-width: 80px;
-}
-
-
-
-
-
-/*.email_edit
-{
-  display: inline-block;
-   white-space: nowrap; 
-  width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.contact_edit
-{
-  white-space: nowrap; 
-  width:100%; 
-  overflow:hidden;
-  text-overflow: ellipsis; 
-}*/
-
-.col6 {
-    margin-left: 1%;
-    width: 150px;
-}
-
-.col6 input {
-    border: none;
-}
-
-.col7 {
-    padding-left: 6%;
-}
-
-
-.col7 p {
-    white-space: nowrap;
-    width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.form2 {
-    padding-top: 0.5%;
-}
-
 #import {
     width: 145px;
     color: #fff;
@@ -376,6 +293,7 @@ button#defaultOpen {
     padding-bottom: 1%;
     /* padding-bottom: 1%;*/
 }
+
 
 
 
@@ -534,16 +452,15 @@ button#defaultOpen {
     margin-top: 2%;
     margin-right: 5%;
     margin-left: 12%;
+    width:100%;
 }
 
 .btn_add_modal {
+    margin-left:45%;
+    height:30px;
     background-color: #FF9900;
     color: #fff;
     border-radius: 20px;
-    /*margin-left:50%;*/
-    /*margin-left:10%;*/
-    /*margin-right:10%;*/
-    /*float:right;*/
     width: 100px;
     box-shadow: none;
     outline: none;
@@ -582,9 +499,12 @@ button#defaultOpen {
     box-shadow: none;
 }
 
-.white_bg {
-    margin: 2%;
+.content {
+    /*width:105%;*/
+    margin-top: 2%;
     background-color: #fff;
+    margin-left: 0 !important;
+    max-width: 100%;
 }
 
 .table_groups {
@@ -684,6 +604,7 @@ button#defaultOpen {
     font-weight: 500;
     /*transform: translate(-50%, -50%);*/
 }
+
 
 
 
@@ -891,6 +812,7 @@ button#defaultOpen {
 
 
 
+
 /*.text_padding2
 {
   margin-bottom:0;
@@ -967,6 +889,7 @@ button#defaultOpen {
 
 
 
+
 /*.social_link
 {
   width:50%;
@@ -1034,6 +957,7 @@ button#defaultOpen {
     border-radius: 3px;
     border: 1px solid #d4d8dd;
 }
+
 
 
 
