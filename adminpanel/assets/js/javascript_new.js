@@ -12,6 +12,7 @@ $(document).ready(function() {
         $("#wait").css("display", "block");
     });
 
+// Function for Search
     $("#search_bar").keypress(function(event) {
         if (event.keyCode == 13) {
             var search_input = $("#search_bar").val();
@@ -27,11 +28,11 @@ $(document).ready(function() {
                     $("#prev").hide();
                     $("#next").hide();
                     $("#wait").css("display", "none");
-                    console.log(search_result);
+                    // console.log(search_result);
                     $("#append_rows").empty();
                     $("#append_rows_search").empty();
                     for (var i = 0; i < search_result.data.length; i++) {
-                        console.log(search_result.data[i].Contact);
+                        // console.log(search_result.data[i].Contact);
                         $("#append_rows_search").append('<div id="' + search_result.data[i].appid + '" class="form2 row f"><div class="col-sm-1 col1"> <label ><input name="ck" type="checkbox" value=""></label></div><div class="col-sm-2 col2"><p>' + search_result.data[i].Event_name + '</p></div><div class="col-sm-1 col3"><p>' + search_result.data[i].Format + '</p></div><div class="col-sm-1 col4"><p>' + search_result.data[i].City + '</p></div><div class="col-sm-1 col5"><p>' + search_result.data[i].Country + '</p></div><div class="col-sm-1 col6" contenteditable="true"><input class="email_edit" id="' + search_result.data[i].Email + '_search" onclick="edit_email_min(this)" onchange="email_on_change(this)" value=' + search_result.data[i].Email + '></div><div class="col-sm-1 col7" contenteditable="true"><input class="contact_edit" id="' + search_result.data[i].Contact + '_search" onclick="edit_cont_min(this)" onchange="contact_on_change(this)" value=' + search_result.data[i].Contact + '></div><div class="col-sm-1 col8"><p>' + search_result.data[i].Organiser_name + '</p></div><div class="col-sm-1 col9"><p>' + search_result.data[i].Start_date + '</p></div><div class="col-sm-1 col10"><p>' + search_result.data[i].End_date + '</p></div><div class="col-sm-1 col11 dropdown2"> <button type="button" class="btn more" data-toggle="dropdown"><i class="fas fa-ellipsis-v"></i> </button><div class="dropdown-menu"> <a class="dropdown-item" href="leadscreen.html">Leads</a> <a class="dropdown-item" href="edit.html#' + search_result.data[i].appid + '">Edit</a> <a class="dropdown-item" href="view-more.html#' + search_result.data[i].appid + '">View More</a> <a class="dropdown-item" onclick="confirm_delete(this)">Delete</a></div></div></div>');
                     }
                 },
@@ -42,6 +43,8 @@ $(document).ready(function() {
         }
     });
 
+
+// To display the data from the database
     $.ajax({
         url: 'http://139.59.56.245:3080/sync?pretty',
         type: 'GET',
@@ -59,14 +62,9 @@ $(document).ready(function() {
                 alert("Couldn't fetch contact infor types");
             } else {
                 console.log(datago.data.length);
-                // firstdisplayed =datago.data[0].serial;
                 for (var i = 0; i < datago.data.length; i++) {
                     $("#append_rows").append('<div id="' + datago.data[i].appid + '" class="form2 row f"><div class="col-sm-1 col1"> <label ><input name="ck" type="checkbox" value=""></label></div><div class="col-sm-2 col2"><p>' + datago.data[i].Event_name + '</p></div><div class="col-sm-1 col3"><p>' + datago.data[i].Format + '</p></div><div class="col-sm-1 col4"><p>' + datago.data[i].City + '</p></div><div class="col-sm-1 col5"><p>' + datago.data[i].Country + '</p></div><div class="col-sm-1 col6" contenteditable="true"><input class="email_edit" id="' + datago.data[i].Email + '_email" onclick="edit_email_min(this)" onchange="email_on_change(this)" value=' + datago.data[i].Email + '></div><div class="col-sm-1 col7" contenteditable="true"><input class="contact_edit" id="' + datago.data[i].contact + '_contact" onclick="edit_cont_min(this)" onchange="contact_on_change(this)" value=' + datago.data[i].contact + '></div><div class="col-sm-1 col8"><p>' + datago.data[i].Organiser_name + '</p></div><div class="col-sm-1 col9"><p>' + datago.data[i].Start_date + '</p></div><div class="col-sm-1 col10"><p>' + datago.data[i].End_date + '</p></div><div class="col-sm-1 col11 dropdown2"> <button type="button" class="btn more" data-toggle="dropdown"><i class="fas fa-ellipsis-v"></i> </button><div class="dropdown-menu"> <a class="dropdown-item" href="leadscreen.html">Leads</a> <a class="dropdown-item" href="edit.html#' + datago.data[i].appid + '">Edit</a> <a class="dropdown-item" href="view-more.html#' + datago.data[i].appid + '">View More</a> <a class="dropdown-item" onclick="confirm_delete(this)">Delete</a></div></div></div>');
                 }
-                // for(var i=0; i<5;i++){
-                //    $("#append_rows").append('<div id="'+datago.data[i].appid+'" class="form2 row f"><div class="col-sm-1 col1"> <label ><input name="ck" type="checkbox" value=""></label></div><div class="col-sm-2 col2"><p>'+datago.data[i].Event_name+'</p></div><div class="col-sm-1 col3"><p>'+datago.data[i].Format+'</p></div><div class="col-sm-1 col4"><p>'+datago.data[i].City+'</p></div><div class="col-sm-1 col5"><p>'+datago.data[i].Country+'</p></div><div class="col-sm-1 col6" contenteditable="true"><input class="email_edit" id="'+datago.data[i].Email+'_email" onclick="edit_email_min(this)" onchange="email_on_change(this)" value='+datago.data[i].Email+'></div><div class="col-sm-1 col7" contenteditable="true"><input class="contact_edit" id="'+datago.data[i].contact+'_contact" onclick="edit_cont_min(this)" onchange="contact_on_change(this)" value='+datago.data[i].contact+'></div><div class="col-sm-1 col8"><p>'+datago.data[i].Organiser_name+'</p></div><div class="col-sm-1 col9"><p>'+datago.data[i].Start_date+'</p></div><div class="col-sm-1 col10"><p>'+datago.data[i].End_date+'</p></div><div class="col-sm-1 col11 dropdown2"> <button type="button" class="btn more" data-toggle="dropdown"><i class="fas fa-ellipsis-v"></i> </button><div class="dropdown-menu"> <a class="dropdown-item" href="leadscreen.html">Leads</a> <a class="dropdown-item" href="edit.html#'+datago.data[i].appid+'">Edit</a> <a class="dropdown-item" href="view-more.html#'+datago.data[i].appid+'">View More</a> <a class="dropdown-item" onclick="confirm_delete(this)">Delete</a></div></div></div>');           
-                // }
-
             }
         },
         error: function(errdatagc) {
@@ -98,6 +96,7 @@ $(document).ready(function() {
     });
 
 
+// To display all the details of a particular event
     if (window.location.href.indexOf("view-more.html") >= 0) {
         var eid = window.location.href.split('#').pop();
 
@@ -160,6 +159,7 @@ $(document).ready(function() {
 
     }
 
+// To edit the event details
     if (window.location.href.indexOf("edit.html") >= 0) {
 
         var eid2 = window.location.href.split('#').pop();
@@ -226,7 +226,7 @@ $(document).ready(function() {
         });
     }
 
-
+// To add new events to the database
     if (window.location.href.indexOf("add.html") >= 0) {
 
         $("#description_name").append('<div class="col-sm-10" ><input class="add-events" id="description_name_add" type="text"></input></div>');
@@ -262,6 +262,7 @@ $(document).ready(function() {
 
 });
 
+// To save all the records to the development server(104)
 function save_all() {
     $.ajax({
         url: 'http://139.59.56.245:3080/sync_all?pretty',
@@ -303,10 +304,9 @@ function save_all() {
 
 }
 
-
+// To display the records based on the no.of records entered by the user
 function sync_view() {
     var limit = $("#limit").val();
-    // console.log('limit'+limit);
     if (limit == '')
         Redirect();
     no_of_pages = Math.ceil(total_records / limit);
@@ -329,7 +329,6 @@ function sync_view() {
                 for (var i = 0; i < sync_view.data.length; i++) {
                     $("#append_rows").append('<div id="' + sync_view.data[i].appid + '" class="form2 row f"><div class="col-sm-1 col1"> <label ><input name="ck" type="checkbox" value=""></label></div><div class="col-sm-2 col2"><p>' + sync_view.data[i].Event_name + '</p></div><div class="col-sm-1 col3"><p>' + sync_view.data[i].Format + '</p></div><div class="col-sm-1 col4"><p>' + sync_view.data[i].City + '</p></div><div class="col-sm-1 col5"><p>' + sync_view.data[i].Country + '</p></div><div class="col-sm-1 col6" contenteditable="true"><input class="email_edit" id="' + sync_view.data[i].Email + '_email" onclick="edit_email_min(this)" onchange="email_on_change(this)" value=' + sync_view.data[i].Email + '></div><div class="col-sm-1 col7" contenteditable="true"><input class="contact_edit" id="' + sync_view.data[i].contact + '_contact" onclick="edit_cont_min(this)" onchange="contact_on_change(this)" value=' + sync_view.data[i].contact + '></div><div class="col-sm-1 col8"><p>' + sync_view.data[i].Organiser_name + '</p></div><div class="col-sm-1 col9"><p>' + sync_view.data[i].Start_date + '</p></div><div class="col-sm-1 col10"><p>' + sync_view.data[i].End_date + '</p></div><div class="col-sm-1 col11 dropdown2"> <button type="button" class="btn more" data-toggle="dropdown"><i class="fas fa-ellipsis-v"></i> </button><div class="dropdown-menu"> <a class="dropdown-item" href="leadscreen.html">Leads</a> <a class="dropdown-item" href="edit.html#' + sync_view.data[i].appid + '">Edit</a> <a class="dropdown-item" href="view-more.html#' + sync_view.data[i].appid + '">View More</a> <a class="dropdown-item" onclick="confirm_delete(this)">Delete</a></div></div></div>');
                 }
-
             }
         },
         error: function(errdatagc) {
@@ -338,9 +337,10 @@ function sync_view() {
     });
 }
 
+// To sort the events and display the no.of records as required by the user
 function sort_view() {
-
-    var limit = $("#limit").val();
+    // User can enter the number of records he want to see per page
+    var limit = $("#limit").val();    
 
     if (limit == '')
         Redirect();
@@ -373,6 +373,7 @@ function sort_view() {
     });
 }
 
+// Function to display the next set of records
 function syncnext() {
     if (page_number == (no_of_pages)) {
         $('.next').attr('disabled', true);
@@ -414,9 +415,10 @@ function syncnext() {
     }
 }
 
+// Function to display the previous set of records
 function syncprev() {
     if (page_number == 1) {
-        $('.prev').attr('disabled', true);
+        $('.prev').attr('disabled', true);    
 
     } else {
 
@@ -453,6 +455,7 @@ function syncprev() {
     }
 }
 
+// To display the next set of records after the sorting is done
 function sortnext() {
     if (page_number == (no_of_pages)) {
         $('.next').attr('disabled', true);
@@ -491,6 +494,7 @@ function sortnext() {
     }
 }
 
+// To display the previous set of records after the sorting is done
 function sortprev() {
     if (page_number == 1) {
         $('.prev').attr('disabled', true);
@@ -530,6 +534,7 @@ function sortprev() {
     }
 }
 
+// To enable the editing of the email on the main page itself 
 function email_on_change(item) {
 
     var app_id = $(item).parent().parent()[0].id;
@@ -557,11 +562,13 @@ function email_on_change(item) {
 
 }
 
+// To display the entire email on clicking
 function edit_email_min(item) {
     var mailid = $(item)[0].id;
     $("#".mailid).css({ 'width': '100%', 'text-overflow': 'initial', 'overflow': 'auto', 'white-space': 'normal' });
 }
 
+// To enable the editing of the contact on the main page itself
 function contact_on_change(item) {
     var app_id = $(item).parent().parent()[0].id;
     var cont_change = $(item).val();
@@ -587,17 +594,18 @@ function contact_on_change(item) {
 
 }
 
+// To display the entire contact on clicking
 function edit_cont_min(item) {
     var cont = $(item)[0].id;
     $("#" + cont).css({ 'width': '100%', 'text-overflow': 'initial', 'overflow': 'auto', 'white-space': 'normal' });
 }
 
-
+// To redirect back to the adminpanel page
 function Redirect() {
     window.location = "adminpanel.html";
 }
 
-
+// Confirm before savin
 function confirm_edit_save() {
     var r = confirm("Are you sure you want to save the changes?");
     if (r == true) {
@@ -605,7 +613,7 @@ function confirm_edit_save() {
     }
 }
 
-
+// To save the edited info to the database
 function edit_save() {
     var des_name_edit = $("#description_name_edit").text();
     var des_app_edit = $("#description_appid_edit").text();
@@ -696,6 +704,7 @@ function edit_save() {
     });
 }
 
+// Function to read the XLSX file and convert to a binary string
 window.addEventListener("load", function() {
     document.getElementById("file-upload").onchange = function(e) {
         var files = e.target.files; // From the Upload type html object, get the file path that is uploaded
@@ -717,6 +726,7 @@ window.addEventListener("load", function() {
     }
 });
 
+// To convert the data from .xlsx file to JSON format
 function to_json(workbook) {
     var result = {};
     workbook.SheetNames.forEach(function(sheetName) {
@@ -733,6 +743,7 @@ function to_json(workbook) {
     });
 }
 
+// To upload the .xlsx file to the database
 function upload_excel(jsonObj) {
     $.ajax({
         type: 'POST',
@@ -753,11 +764,13 @@ function upload_excel(jsonObj) {
     console.log(jsonObj);
 }
 
+// To cancel XLSX upload
 function cancel_upload() {
     window.location = "excel_json.html";
 }
 
 
+// To confirm before saving the selected events
 function confirm_save_index(item) {
     var r = confirm("Are you sure you want to save the selected events?");
     if (r == true) {
@@ -765,9 +778,9 @@ function confirm_save_index(item) {
     }
 }
 
-
+// To save the selected events to the database
 function save_selected(item) {
-    console.log("Save");
+    // console.log("Save");
     var save_selected = $("input:checkbox[name=ck]:checked");
     for (var i = 0; i < save_selected.length; i++) {
         var ele = save_selected[i];
@@ -785,11 +798,9 @@ function save_selected(item) {
             }
         });
     }
-
-
-
 }
 
+// To save individual event
 function confirm_save() {
     var r = confirm("Are you sure you want to save this event?");
     if (r == true) {
@@ -797,6 +808,7 @@ function confirm_save() {
     }
 }
 
+// To save the newly added event
 function add_save() {
     var des_name = $("#description_name_add").val();
     var des_cat = $("#description_category_add").val();
@@ -878,7 +890,7 @@ function toggle(source) {
 }
 
 
-
+// Confirm before deletion
 function confirm_delete(item) {
     var r = confirm("Are you sure you want to delete this event?");
     if (r == true) {
@@ -889,7 +901,6 @@ function confirm_delete(item) {
 
 //To delete individual row
 function deleteElement(item) {
-
     var rows = $(item).parent().parent().parent()[0].id;
     $("#" + rows).hide();
     $.ajax({
@@ -905,7 +916,7 @@ function deleteElement(item) {
     });
 }
 
-
+// To confirm before deleting multiple events
 function confirm_delete_multiple(item) {
     var r = confirm("Are you sure you want to delete selected events?");
     if (r == true) {
@@ -913,6 +924,7 @@ function confirm_delete_multiple(item) {
     }
 }
 
+// To delete multiple selected events
 function deleteSelectedElements(item) {
     var selected = $("input:checkbox[name=ck]:checked");
     for (var i = 0; i < selected.length; i++) {
@@ -933,6 +945,7 @@ function deleteSelectedElements(item) {
     }
 }
 
+// To delete the selected elements in leadscreen
 function deleteSelectedElements_leads(item) {
     var selected = $("input:checkbox[name=ck]:checked");
     for (var i = 0; i < selected.length; i++) {
@@ -943,10 +956,12 @@ function deleteSelectedElements_leads(item) {
     }
 }
 
+// To display dropdown list
 function dropdownFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
 
+// To display dropdown list
 window.onclick = function(event) {
     if (!event.target.matches('.dropbtn')) {
         var dropdowns = document.getElementsByClassName("dropdown-content");
@@ -960,16 +975,19 @@ window.onclick = function(event) {
     }
 }
 
+// To display dropdown list
 function dropdownFunction2(item) {
     var id_row = $(item).siblings()[0].id;
     $("#" + id_row).css("display", "block");
 }
 
+// To hide dropdown list
 function hidedropdown(item) {
     var class_drop = $(item).siblings()[0].id;
     $("#" + class_drop).hide();
 }
 
+// Function to sort the events by the start_date
 function sort_by_start_date() {
     //view_records
     page_number = 1;
@@ -993,14 +1011,13 @@ function sort_by_start_date() {
     $('#next').attr('onClick', 'sortnext()');
 }
 
+// To authorise the employee login
 function employee_login()
-
 {
-
     var username = $('#username').val();
     var password = $('#password').val();
-    console.log(username);
-    console.log(password);
+    // console.log(username);
+    // console.log(password);
 
     $.ajax({
         type: 'POST',
