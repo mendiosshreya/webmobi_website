@@ -49,10 +49,11 @@ $(document).ready(function() {
         }
     });
 
+    // Function to display the events details when the event is clicked
     if (window.location.href.indexOf("event-details.html") >= 0) {
-        // userid='';
+
         var event_appid = window.location.href.split('#').pop();
-        // console.log(event_appid);
+
         $.ajax({
             type: 'POST',
             data: { "userid": "32dfa84844d9de66e4c77fc71cbdb5bd", "appid": event_appid },
@@ -63,24 +64,18 @@ $(document).ready(function() {
                 var date_inmilliseconds_sd = start_date * 1;
                 var end_date = Date.parse(event_details.events[0].end_date);
                 var date_inmilliseconds_ed = end_date * 1;
-
-                // console.log(event_details);
                 $(".header-wrapper-event-det").css("background-image", "url('" + event_details.events[0].app_image + "')");
                 $('.event-det-cont').append('<div class="row event-det"><div class="col-sm-4 event-det-sec1"><div class="event-det-sec1-1"><h3>' + event_details.events[0].app_name + '</h3><h5>#' + event_details.events[0].app_category + ' #tags #tags</h5><h6><i class="fas fa-map-marker-alt"></i>' + event_details.events[0].location + '</h6><h6>' + date_day(date_inmilliseconds_sd) + " " + milli_hour(date_inmilliseconds_sd) + '-' + date_day(date_inmilliseconds_ed) + " " + milli_hour(date_inmilliseconds_ed) + '</h6> <button class="btn interestedbtn" data-toggle="modal" data-target="#intrst">INTERESTED</button><div class="event-det-share-sec1"><div class="row"><div class="col-sm-2 offset-sm-3 event-det-social"><h5>Share:</h5></div><div class="col-sm-1 event-det-social"> <a href=""><i class="fab fa-facebook-f"></i></a></div><div class="col-sm-1 event-det-social"> <a href=""><i class="fab fa-twitter"></i></a></div><div class="col-sm-1 event-det-social"> <a href=""><i class="fab fa-linkedin-in"></i></i></a></div><div class="col-sm-1 event-det-social"> <a href=""><i class="fab fa-google-plus-g"></i></i></a></div></div></div></div><div class="event-det-sec1-2"><h4>Organiser Details</h4> <img class="event-det-org-pic"><h5>Organiser Name</h5> <button type="button" class="btn sendmessage">SEND MESSAGE</button></div></div><div class="col-sm-8 event-det-sec2"><div class="event-det-heading"><ul class="nav"><li class="nav-item"><a href="#overview" class="nav-link">OVERVIEW</a></li><li class="nav-item"><a href="#tickets" class="nav-link">TICKETS</a></li><li class="nav-item"><a href="#venue" class="nav-link">VENUE</a></li></ul></div><div class="event-det-overview" id="overview"><h2>OVERVIEW</h2><h4>' + event_details.events[0].app_description + '</h4></div><div class="event-det-tickets" id="tickets"><h2>TICKETS</h2><h4>Tickets for "' + event_details.events[0].app_name + '" can be purchased here.</h4> <button type="button" class="btn booknow">BOOK NOW</button></div><div class="event-det-venue" id="venue"><h2>VENUE</h2><h4>' + event_details.events[0].location + '</h4><div id="map"> <img  class="img-responsive"></div></div></div></div>');
                 $('.modal-dialog').append('<div class="modal-content"><div class="modal-header text-center"><h4 class="modal-title">' + event_details.events[0].app_name + '</h4> <button type="button" class="close" data-dismiss="modal">&times;</button></div><div class="modal-body"><div class="form-group event-det-modal"> <i class="fas fa-user"></i> <input type="text" class="form-control event-det-username" id="usrname" placeholder="Full Name"></div><div class="form-group event-det-modal"> <i class="fas fa-map-marker-alt"></i> <input type="text" class="form-control event-det-username" id="loc" placeholder="Your City ( Start typing to see option )"></div><div class="form-group event-det-modal"> <i class="fas fa-building"></i> <input type="text" class="form-control event-det-username" id="company" placeholder="Company"></div> <span class="individual"> <label class="form-check-label" style="margin-top: -10%;"> <input type="checkbox" class="form-check-input" value=""> Individual </label> </span><div class="form-group event-det-modal"> <i class="fas fa-briefcase"></i> <input type="text" class="form-control event-det-username" id="designation" placeholder="Designation"></div><div class="form-group event-det-modal"> <i class="fas fa-mobile-alt"></i> <input type="text" class="form-control event-det-username" id="mobno" placeholder="Mobile number"></div><div class="submit-btn"> <button type="submit" class="btn submit1" data-dismiss="modal">SUBMIT</button></div></div></div>');
-
                 var line1 = event_details.events[0].location;
-                // console.log(line1);
                 $("#map").css({ "width": "100%", "height": "400px" })
                 var address = line1;
-
                 var map = new google.maps.Map(document.getElementById('map'), {
                     mapTypeId: google.maps.MapTypeId.TERRAIN,
                     zoom: 13
                 });
 
                 var geocoder = new google.maps.Geocoder();
-
                 geocoder.geocode({
                         'address': address
                     },
@@ -101,8 +96,9 @@ $(document).ready(function() {
 
     }
 
+    // Search function
     if (window.location.href.indexOf("trade-shows.html") >= 0) {
-        // alert();
+
         var search_input = window.location.href.split('#').pop();
 
 
@@ -130,7 +126,7 @@ $(document).ready(function() {
                         if (loc.length > 40)
                             loc = loc.substring(0, 40) + '...';
                         var entry_fee_search = parseInt(search_result.events[i].entry_fee);
-                        // console.log(entry_fee_trade);
+
                         if (entry_fee_search == 0)
                             var entry_fee_text_search = "Free";
                         else
@@ -154,7 +150,7 @@ $(document).ready(function() {
                 console.log(errdatagc);
             }
         });
-        // console.log(eid);
+
 
 
     }
@@ -162,7 +158,7 @@ $(document).ready(function() {
 
 
     if (window.location.href.indexOf("trade-shows.html") >= 0) {
-        // alert();
+
         pg_no_trade = 1;
         var target = window.location.href.split('#').pop();
         if (target == "tradeshows_view") {
@@ -252,7 +248,7 @@ $(document).ready(function() {
 
 
 
-
+    // To display 2 upcoming tradeshows on the main page
     $.ajax({
         type: 'GET',
         url: 'http://104.131.76.15:3000/api/event/discovery_web_events?type=tradeshow',
@@ -262,11 +258,11 @@ $(document).ready(function() {
                 loc1 = loc1.substring(0, 50) + '...';
 
             var loc2 = tradeshows.events[1].location;
-            // console.log(loc2.length);
+
             if (loc2.length > 40)
                 loc2 = loc2.substring(0, 40) + '...';
 
-            // var trade1_sd=new Date(tradeshows.events[0].start_date);
+
             var trade1_sd = Date.parse(tradeshows.events[0].start_date);
             var date_inmilliseconds_sd1 = trade1_sd * 1;
 
@@ -297,6 +293,7 @@ $(document).ready(function() {
 
     });
 
+    // To display 2 upcoming conferences on the main page
     $.ajax({
         type: 'GET',
         url: 'http://104.131.76.15:3000/api/event/discovery_web_events?type=conference',
@@ -313,7 +310,7 @@ $(document).ready(function() {
             if (loc4.length > 50)
                 loc4 = loc4.substring(0, 50) + '...';
 
-            // var con1_sd=new Date(conferences.events[0].start_date);
+
             var con1_sd = Date.parse(conferences.events[0].start_date);
             var date_inmilliseconds_sd1 = con1_sd * 1;
 
@@ -341,9 +338,9 @@ $(document).ready(function() {
 
     });
 
+    // To display top 6 countries in the filter
     $.ajax({
         type: 'GET',
-        // url: 'http://139.59.56.245:3080/freq_country?pretty',
         url: 'http://104.131.76.15:3000/api/event/discovery_filter_list',
         success: function(fcountry) {
             $('#all_country').append('<div><input type="checkbox" name="country" value="' + fcountry.country[0].Country + '">' + fcountry.country[0].Country + '</div>');
@@ -361,13 +358,11 @@ $(document).ready(function() {
     });
 
 
-
+    // To display top 6 locations in the filter
     $.ajax({
         type: 'GET',
         url: 'http://104.131.76.15:3000/api/event/discovery_filter_list',
         success: function(fcity) {
-
-
 
             for (var i = 1; i < 7; i++) {
                 $('#all_location').append('<div><input type="checkbox" name="location" value="' + fcity.city[i].city + '">' + fcity.city[i].city + '</div>');
@@ -383,6 +378,8 @@ $(document).ready(function() {
 
     });
 
+    // Function to display the top 6 categories in the filter
+    // Change it to 104 API 
     $.ajax({
         type: 'GET',
 
@@ -399,12 +396,11 @@ $(document).ready(function() {
 
     });
 
+    // To display the countries in the filter
     $.ajax({
         type: 'GET',
         url: 'http://104.131.76.15:3000/api/event/discovery_filter_list',
         success: function(all_country) {
-
-
 
             for (var i = 0; i < all_country.country.length; i++) {
 
@@ -419,12 +415,11 @@ $(document).ready(function() {
 
     });
 
-
+    // Function to display all the cities in the filter
     $.ajax({
         type: 'GET',
         url: 'http://104.131.76.15:3000/api/event/discovery_filter_list',
         success: function(all_city) {
-
 
             for (var i = 0; i < all_city.city.length; i++) {
                 $("#myUL").append('<li><a href="#"><input type="checkbox" name="location" value="' + all_city.city[i].city + '">' + all_city.city[i].city + '</a></li>');
@@ -437,6 +432,9 @@ $(document).ready(function() {
         }
 
     });
+
+    // Function to display all the categories in the filter in alphabetical order
+    // Change it to 104 API 
     $.ajax({
         type: 'GET',
         url: 'http://139.59.56.245:3080/all_category?pretty',
@@ -509,9 +507,8 @@ function Redirect() {
     window.location = "trade-shows.html";
 }
 
-
 function search_events() {
-    // alert();
+
     var search_input = $("#search_events").val();
     console.log(search_input);
     if (search_input == '') {
@@ -548,23 +545,18 @@ function search_events() {
 }
 
 
-// $(window).load(function()
-//  {
-//    handleTopNavAnimation();
-//  });
-
 
 function handleTopNavAnimation() {
 
     var top = $(window).scrollTop();
     if (top > 10) {
-        //alert("scroll");
+
         $('#mainNavigation').addClass('navbar-solid');
     } else {
         $('#mainNavigation').removeClass('navbar-solid');
     }
 }
-
+// To display tradeshows
 function display_tradeshows(e) {
 
     var action = e.id;
@@ -574,7 +566,7 @@ function display_tradeshows(e) {
         pg_no_trade = 1;
     else {
         if (action == "next") {
-            // if(next_page==true)
+
             ++pg_no_trade;
         } else {
             if (pg_no_trade != 1)
@@ -592,8 +584,7 @@ function display_tradeshows(e) {
         success: function(datago_trade) {
 
             console.log(datago_trade);
-            // if (datago_trade.next_page == true) {
-            // console.log(datago_trade.events.length);
+
             $("#trade_display").empty();
             for (var i = 0; i < datago_trade.events.length; i++) {
                 var loc = datago_trade.events[i].location;
@@ -631,10 +622,11 @@ function display_tradeshows(e) {
 
 }
 
+// To display conferences
 function display_conferences(e) {
-    // console.log(e.id);
+
     var action = e.id;
-    // console.log(action);
+
     if (action == "conf_main")
         pg_no_conf = 1;
     else {
@@ -657,8 +649,7 @@ function display_conferences(e) {
             console.log(datago_conf);
 
 
-            // console.log(datago_conf);
-            // console.log(datago_conf.events.length);
+
             $("#conf_display").empty();
             for (var i = 0; i < datago_conf.events.length; i++) {
                 var loc = datago_conf.events[i].location;
@@ -697,11 +688,9 @@ function display_conferences(e) {
 
 }
 
-
-
-
+// To display all the events
 function trade_conferences(e) {
-    // alert();
+
     var action = e.id;
     if (action == "all_main")
         pg_no_all = 1;
@@ -762,48 +751,6 @@ function trade_conferences(e) {
 
 }
 
-// function display_all_countries()
-// {
-//   $.ajax({
-//     type: 'GET',
-//             url: 'http://139.59.56.245:3080/all_country?pretty',
-//                         success: function(all_country) {
-//                                                          // console.log("sellength"+selected.length);
-
-//                               for(var i=0;i<all_country.data.length;i++)
-//                               {
-//                                 console.log(all_country.data[i].Country);
-
-//                                 $('#filter_all_countries').append('<li><input type="checkbox" name="country" value="'+all_country.data[i].Country+'">'+all_country.data[i].Country+'</li>');
-
-//                               }
-
-//                         },error:function(errdatagc)
-//             {
-//                 console.log(errdatagc);
-//             }                             
-
-//   });
-// }
-function display_all_locations() {
-    $.ajax({
-        type: 'GET',
-        url: 'http://139.59.56.245:3080/all_city?pretty',
-        success: function(all_city) {
-            console.log(all_city.data.length);
-            for (var i = 0; i < all_city.data.length; i++) {
-                console.log(all_city.data[i].City);
-                $('#filter_all_locations').append('<li><input type="checkbox" name="location" value="' + all_city.data[i].City + '">' + all_city.data[i].City + '</li>');
-            }
-
-        },
-        error: function(errdatagc) {
-            console.log(errdatagc);
-        }
-
-    });
-}
-
 function display_all_categories() {
     $.ajax({
         type: 'GET',
@@ -822,6 +769,7 @@ function display_all_categories() {
     });
 }
 
+// To search events by name
 function search_events_name(e) {
     var search_input = $("#search_events_name").val();
     console.log(search_input);
@@ -858,7 +806,7 @@ function search_events_name(e) {
         }
     });
 }
-
+// Search function for the index page
 function index_search() {
     var search_input = $("#search_events").val();
     if (search_input == '')
@@ -873,6 +821,8 @@ function add_to_filter() {
     var selected_location = $("input:checkbox[name=location]:checked");
 }
 
+
+// Function to filter events based n countries,location,dates,etc
 function filter() {
 
     var selected_country = $("input:checkbox[name=country]:checked");
@@ -894,7 +844,6 @@ function filter() {
     for (var i = 0; i < selected_country.length; i++) {
         var sel_value_country = $(selected_country[i]).val();
         country_array.push(sel_value_country);
-        // console.log(sel_value_country);
     }
 
 
@@ -917,10 +866,6 @@ function filter() {
     } else {
         locat = JSON.stringify(location_array);
     }
-    // 
-    // console.log(country_array);
-    // console.log(location_array);
-
 
     $.ajax({
 
@@ -936,12 +881,10 @@ function filter() {
                     if (loc.length > 40)
                         loc = loc.substring(0, 40) + '...';
                     var entry_fee_filter = parseInt(filter.events[i].entry_fee);
-                    // console.log(entry_fee_trade);
                     if (entry_fee_filter == 0)
                         var entry_fee_text_filter = "Free";
                     else
                         var entry_fee_text_filter = "Paid";
-                    // var sd=new Date(filter.events[i].start_date);
                     var sd = Date.parse(filter.events[i].start_date);
                     var date_inmilliseconds = sd * 1;
                     $("#all_display").append('<div class="col-sm-4"><div class="popular-events-cell1"> <a href="event-details.html#' + filter.events[i].appid + '"><div class="pop-bg-img2"> <img src=' + filter.events[i].app_image + '></div><div class="pop-event-cont1"><h5>' + filter.events[i].app_name + '</h5></div><div class="row pop-event-cont2"><div class="col-sm-8 pop-event-loc-time"><h6><i class="fas fa-map-marker-alt"></i>' + loc + '</h6><h6><i class="far fa-calendar-alt"></i>' + date_day(date_inmilliseconds) + " " + milli_hour(date_inmilliseconds) + '</h6></div><div class="col-sm-4 pop-event-price"><h5>' + entry_fee_text_filter + '</h5></div></div><div class="pop-event-cont3"><h6>#' + filter.events[i].app_category + ", " + '#' + filter.events[i].app_sub_category + '</h6></div> </a></div></div></div>');
@@ -955,7 +898,7 @@ function filter() {
             console.log(errdatagc);
         }
     });
-    console.log(country_array);
+    // console.log(country_array);
     // console.log(location_array);
     //To empty the arrays
     country_array = [];
@@ -964,6 +907,7 @@ function filter() {
     console.log(location_array);
 }
 
+// To format the date in the required format
 function milli_hour(date_inmilliseconds) {
     var a = new Date(date_inmilliseconds);
     var c = "";
